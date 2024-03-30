@@ -1,0 +1,15 @@
+Listado:
+- Numero 
+- Nombre
+- Tipos
+
+
+Detalle:
+- Nombre
+- Tipos
+- Descripción 
+- Altura
+- Peso
+- Imagen
+- Grito
+
