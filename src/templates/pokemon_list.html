@@ -5,12 +5,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Pokedex</title>
-        <!-- <link rel="stylesheet" href="./style.css"> -->
         <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap-5.0.2-dist/css/bootstrap.min.css') }}">
         <link rel="stylesheet" href="{{ url_for('static', filename='font-awesome-4.7.0/css/font-awesome.min.css') }}">
         <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
         <link rel="stylesheet" href="{{ url_for('static', filename='css/pokemon_types.css') }}">
-        <link rel="icon" href="/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
     </head>
     <body>
         <main>
@@ -18,7 +17,7 @@
                 <div class="row justify-content-md-center">
                     <div class="col-lg-2 d-flex align-items-center">
                         <div class="container">
-                            <img src="{{ url_for('static', filename='img/pokedex_image.png') }}" class="img-fluid" alt="Imagen no encontrada">
+                            <img src="{{ url_for('static', filename='img/pokedex_image.png') }}" class="img-fluid" style="padding-top: 12px;" alt="Imagen no encontrada">
                         </div>
                     </div>
                     <div class="col-lg-auto d-flex align-items-center">
@@ -28,15 +27,15 @@
                     </div>
                 </div>                
                 <hr>
-                <div class="row ">
+                <div class="row">
                     {% for pokemon in pokemon_list %}
                         {% if pokemon is not none %}   
                             <div class="col-lg-3 mb-3 d-flex align-items-stretch gy-5">
                                 <div class="card">
-                                    <img src="{{ url_for('static', filename='pokemon/images/normal/' + pokemon.id + '.png') }}" class="card-img-top" alt="Imagen no encontrada">
+                                    <img src="{{ url_for('static', filename='pokemon/images/normal/' + pokemon.id + '.png') }}" class="card-img-top" style="background-color: {{ pokemon.types[0][2] }};" alt="Imagen no encontrada">
                                     <div class="card-body">
-                                        <h4 class="card-title">{{ pokemon.name }}&nbsp;&nbsp;<a class="pokemon-detail-link" href="#"><i class="fa fa-external-link" style="font-size:18px"></i></a></h4> 
-                                        <h6 class="card-subtitle mb-2 text-body-secondary">#{{ pokemon.id }}</h6>
+                                        <h6 class="card-subtitle text-body-secondary">#{{ pokemon.id }}</h6>
+                                        <h4 class="card-title">{{ pokemon.name }}&nbsp;&nbsp;<a class="pokemon-detail-link" href="/pokemon/{{ pokemon.id }}"><i class="fa fa-external-link" style="font-size:18px"></i></a></h4> 
                                         {% if pokemon.types|length == 2 %}
                                         <div class="d-flex justify-content-center gap-4">
                                         {% else %} 
@@ -46,9 +45,6 @@
                                                 <p class="type-icon type-{{ type[0] }}">{{ type[1] }}</p>
                                             {% endfor %}
                                         </div>
-                                        <!-- <p class="card-text">{{ pokemon.desc }}</p> -->
-                                        <!-- <a href="#" class="card-link">Card link</a> -->
-                                        <!-- <a href="#" class="card-link">Another link</a> -->
                                     </div>
                                 </div>
                             </div>
@@ -57,10 +53,9 @@
                 </div>
             </div>
         </main>
-        <!-- <script src="index.js"></script> -->
         <script src="{{ url_for('static', filename='bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js') }}"></script>
         <script src="{{ url_for('static', filename='js/jquery-3.7.1.slim.min.js') }}"></script>
-        <script src="{{ url_for('static', filename='js/pokemon_info_format.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/pokemon_list.js') }}"></script>
     </body>
     
 </html>

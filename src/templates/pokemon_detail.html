@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Pokedex - Información del Pokemon</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap-5.0.2-dist/css/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='font-awesome-4.7.0/css/font-awesome.min.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/pokemon_types.css') }}">
+        <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+    </head>
+    <body>
+        <main>
+            <div class="container">
+                <p>Este es el detalle del Pokemon con ID: {{ pokemon_info.id }}</p>        
+            </div>
+            <div class="container">
+                <audio id="pokemon-cry" controls>
+                    <source src="{{ url_for('static', filename='pokemon/cries/' + pokemon_info.id + '.ogg') }}" type="audio/ogg">
+                    Su navegador no puede reproducir el sonido.
+                </audio>        
+            </div>
+        </main>
+        <script src="{{ url_for('static', filename='bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/jquery-3.7.1.slim.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/pokemon_detail.js') }}"></script>
+    </body>
+    
+</html>
