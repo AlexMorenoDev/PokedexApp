@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Pokedex - Información del Pokemon</title>
+        <title>Pokedex - {{ pokemon_info.name }}</title>
         <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap-5.0.2-dist/css/bootstrap.min.css') }}">
         <link rel="stylesheet" href="{{ url_for('static', filename='font-awesome-4.7.0/css/font-awesome.min.css') }}">
         <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
@@ -14,14 +14,59 @@
     <body>
         <main>
             <div class="container">
-                <p>Este es el detalle del Pokemon con ID: {{ pokemon_info.id }}</p>        
-            </div>
-            <div class="container">
-                <audio id="pokemon-cry" controls>
-                    <source src="{{ url_for('static', filename='pokemon/cries/' + pokemon_info.id + '.ogg') }}" type="audio/ogg">
-                    Su navegador no puede reproducir el sonido.
-                </audio>        
-            </div>
+                <div class="row justify-content-center">
+                    <div class="col-lg-4 gy-5">
+                        <div class="card">
+                            <img src="{{ url_for('static', filename='pokemon/images/normal/' + pokemon_info.id + '.png') }}" id="pokemon-image" class="card-img-top" style="background-color: {{ pokemon_info.types[0][2] }};" alt="Imagen no encontrada">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col">
+                                        <button type="button" id="back-button" class="btn btn-dark btn-sm"><i class="fa fa-arrow-left"></i></i></button>
+                                    </div>
+                                    <div class="col-auto">
+                                        <button type="button" id="toggle-pokemon-image-button" class="btn btn-dark btn-sm"><i class="fa fa-star"></i></button>
+                                    </div>
+                                </div>
+                                <hr>
+                                <h6 class="card-subtitle text-body-secondary">{{ pokemon_info.id }}</h6>
+                                <div class="row">
+                                    <div class="col">
+                                        <span class="card-title" style="text-transform:uppercase;"><h4><strong>{{ pokemon_info.name }}</strong></h4></span>
+                                    </div>
+                                    <div class="col-auto">
+                                        {% for type in pokemon_info.types %}
+                                            <p class="type-icon type-{{ type[0] }}">{{ type[1] }}</p>
+                                        {% endfor %}
+                                    </div>            
+                                </div>
+                                <p>{{ pokemon_info.desc }}</p>
+                                <br>
+                                <table class="table table-bordered table-responsive">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col" class="w-50">Característica</td>
+                                            <th scope="col">Valor</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for value in pokemon_info.attributes.values() %}
+                                            <tr>
+                                                <td>{{ value[2] }}</th>
+                                                <td>{{ value[0] }} {{ value[1] }}</th>
+                                            </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                                <br>
+                                <h6><b>Grito</b>&nbsp;&nbsp;<i class="fa fa-volume-up" aria-hidden="true"></i></h6>
+                                <audio controls id="pokemon-cry" class="w-100">
+                                    <source src="{{ url_for('static', filename='pokemon/cries/' + pokemon_info.id + '.ogg') }}" type="audio/ogg">
+                                    Su navegador no puede reproducir el audio.
+                                </audio>
+                            </div>
+                        </div> 
+                    </div>
+                </div>
         </main>
         <script src="{{ url_for('static', filename='bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js') }}"></script>
         <script src="{{ url_for('static', filename='js/jquery-3.7.1.slim.min.js') }}"></script>

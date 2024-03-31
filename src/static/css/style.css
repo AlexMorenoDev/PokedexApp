@@ -1,0 +1,36 @@
+html {
+    font-family: 'Fira Sans', sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.main-title {
+    font-family: Tahoma, 'sans-serif';
+    font-weight: bold;
+    font-size: 425%;
+    padding-top: 12px;
+    color: #ffcc00;
+    text-shadow:
+        -2px -2px 0 #2775bb,
+        2px -2px 0 #2775bb,
+        -2px 2px 0 #2775bb,
+        2px 2px 0 #2775bb;
+    text-shadow: #2775bb 0px 0px 5px, #2775bb 0px 0px 5px, #2775bb 0px 0px 5px, #2775bb 0px 0px 5px, #2775bb 0px 0px 5px, #2775bb 0px 0px 5px;
+    -webkit-font-smoothing: antialiased;
+}
+
+.pokemon-detail-link:hover {
+    color: blue;
+}
+
+.card-title {
+   padding-bottom: 7px;
+}
+
+.btn-dark {
+    background-color: #484848;
+}
+
+.btn-dark:hover, .btn-dark:focus {
+    color: #ffc107;
+}
