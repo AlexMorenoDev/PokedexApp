@@ -21,17 +21,23 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col">
-                                        <button type="button" id="back-button" class="btn btn-dark btn-sm"><i class="fa fa-arrow-left"></i></i></button>
+                                        {% if pokemon_info.id|int > 1 %}
+                                            <a href="/pokemon/{{ pokemon_info.id|int - 1 }}"><button type="button" class="btn btn-dark btn-sm"><i class="fa fa-arrow-left"></i></button></a>
+                                        {% endif %}
+                                        {% if (pokemon_info.id|int) < pokemon_info.total_pokemon_count %}
+                                            <a href="/pokemon/{{ pokemon_info.id|int + 1 }}"><button type="button" class="btn btn-dark btn-sm"><i class="fa fa-arrow-right"></i></button></a>
+                                        {% endif %}
                                     </div>
                                     <div class="col-auto">
                                         <button type="button" id="toggle-pokemon-image-button" class="btn btn-dark btn-sm"><i class="fa fa-star"></i></button>
+                                        <a href="/"><button type="button" class="btn btn-dark btn-sm"><i class="fa fa-home"></i></i></button></a>
                                     </div>
                                 </div>
                                 <hr>
                                 <h6 class="card-subtitle text-body-secondary">{{ pokemon_info.id }}</h6>
                                 <div class="row">
                                     <div class="col">
-                                        <span class="card-title" style="text-transform:uppercase;"><h4><strong>{{ pokemon_info.name }}</strong></h4></span>
+                                        <span class="card-title" style="text-transform:uppercase;"><h4><strong id="pokemon-name">{{ pokemon_info.name }}</strong></h4></span>
                                     </div>
                                     <div class="col-auto">
                                         {% for type in pokemon_info.types %}
@@ -60,8 +66,8 @@
                                 <br>
                                 <h6><b>Grito</b>&nbsp;&nbsp;<i class="fa fa-volume-up" aria-hidden="true"></i></h6>
                                 <audio controls id="pokemon-cry" class="w-100">
-                                    <source src="{{ url_for('static', filename='pokemon/cries/' + pokemon_info.id + '.ogg') }}" type="audio/ogg">
-                                    Su navegador no puede reproducir el audio.
+                                    <source src="{{ url_for('static', filename='pokemon/cries/mp3/' + pokemon_info.id + '.mp3') }}" type="audio/mpeg">
+                                    Su navegador no es compatible con el formato del audio.
                                 </audio>
                             </div>
                         </div> 

@@ -42,7 +42,7 @@ def get_pokemon_info(pokemon_id):
         }
 
         # Download pokemon cry and sprites only if they dont exist
-        save_file_from_url(pokemon_data["cries"]["latest"], f"../../static/pokemon/cries/{pokemon_id}.ogg")
+        save_file_from_url(pokemon_data["cries"]["latest"], f"../../static/pokemon/cries/ogg/{pokemon_id}.ogg")
         save_file_from_url(pokemon_data["sprites"]["other"]["official-artwork"]["front_default"], f"../../static/pokemon/images/normal/{pokemon_id}.png")
         save_file_from_url(pokemon_data["sprites"]["other"]["official-artwork"]["front_shiny"], f"../../static/pokemon/images/shiny/{pokemon_id}.png" )
 
@@ -69,7 +69,7 @@ def main():
     pkm_id_end = 151
 
     create_folders_structure([
-        "../../static/pokemon/cries/", 
+        "../../static/pokemon/cries/ogg/", 
         "../../static/pokemon/images/normal/", 
         "../../static/pokemon/images/shiny/",
         "../../static/pokemon/info/"

@@ -6,7 +6,7 @@ $(document).ready(function () {
     });
 
     var audio = document.getElementById("pokemon-cry");
-    audio.volume = 0.2;
+    audio.volume = 0.3;
 
     $("#toggle-pokemon-image-button").click(function () {
         var pokemon_image = $("#pokemon-image");
@@ -16,9 +16,5 @@ $(document).ready(function () {
         } else {
             pokemon_image.attr("src", current_url.replace("shiny", "normal"))
         }
-    });
-
-    $("#back-button").click(function () {
-        window.location = document.referrer;
     });
 });
