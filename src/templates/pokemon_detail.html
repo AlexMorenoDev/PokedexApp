@@ -37,11 +37,11 @@
                                 <h6 class="card-subtitle text-body-secondary">{{ pokemon_info.id }}</h6>
                                 <div class="row">
                                     <div class="col">
-                                        <span class="card-title" style="text-transform:uppercase;"><h4><strong id="pokemon-name">{{ pokemon_info.name }}</strong></h4></span>
+                                        <span class="card-title"><h4><strong class="pokemon-name">{{ pokemon_info.name }}</strong></h4></span>
                                     </div>
                                     <div class="col-auto">
                                         {% for type in pokemon_info.types %}
-                                            <p class="type-icon type-{{ type[0] }}">{{ type[1] }}</p>
+                                            <p class="type type-{{ type[0] }} type-sm">{{ type[1] }}</p>
                                         {% endfor %}
                                     </div>            
                                 </div>

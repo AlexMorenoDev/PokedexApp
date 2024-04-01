@@ -44,12 +44,12 @@
                                             </div>
                                         </div>
                                         {% if pokemon.types|length == 2 %}
-                                        <div class="d-flex justify-content-start gap-4">
+                                        <div class="d-flex justify-content-start gap-3">
                                         {% else %} 
                                         <div class="d-flex justify-content-start">
                                         {% endif %}
                                             {% for type in pokemon.types %}
-                                                <p class="type-icon type-{{ type[0] }}">{{ type[1] }}</p>
+                                                <p class="type type-{{ type[0] }}">{{ type[1] }}</p>
                                             {% endfor %}
                                         </div>
                                     </div>

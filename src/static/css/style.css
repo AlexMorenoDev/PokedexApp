@@ -34,3 +34,7 @@ html {
 .btn-dark:hover, .btn-dark:focus {
     color: #ffc107;
 }
+
+.pokemon-name {
+    text-transform: uppercase;
+}
