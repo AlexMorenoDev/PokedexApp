@@ -2,6 +2,7 @@ import os
 import json
 import model.utils as utils
 
+
 def get_all_pokemon_count(target_dir):
     count = 0
     for filename in os.listdir(target_dir):

@@ -38,3 +38,12 @@ html {
 .pokemon-name {
     text-transform: uppercase;
 }
+
+.listing {
+    display: flex;
+}
+
+.load-button-div {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
