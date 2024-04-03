@@ -30,8 +30,11 @@ $(document).ready(function () {
             }
         }
 
+        var load_more_button = $("#load-more-button");
         if (num_items_showing >= num_items) { 
-            $("#load-more-button").remove();
+            load_more_button.remove();
+        } else {
+            load_more_button.blur();
         }
         window.scrollTo(0, window.scrollY + 200);
     });

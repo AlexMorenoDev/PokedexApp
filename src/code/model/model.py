@@ -39,6 +39,7 @@ def get_pokemon_detail(filepath):
         pokemon_info["types"] = utils.format_pokemon_types(pokemon_info.get("types"))
         pokemon_info["attributes"]["height"] = [str(float(pokemon_info.get("attributes").get("height")) / 10), "m", "Altura"]
         pokemon_info["attributes"]["weight"] = [str(float(pokemon_info.get("attributes").get("weight")) / 10), "kg", "Peso"]
+        pokemon_info["stats"] = utils.format_pokemon_stats(pokemon_info.get("stats"))
         return pokemon_info
     else:
         return None

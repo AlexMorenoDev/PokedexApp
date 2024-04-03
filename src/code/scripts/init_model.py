@@ -22,6 +22,16 @@ def save_file_from_url(url, output_file):
         print("INFO: El archivo que se quiere descargar ya existe. Omitiendo...")
 
 
+def format_stats_data(stats):
+    formatted_stats = {}
+    for stat_data in stats:
+        formatted_stats[stat_data["stat"]["name"]] = stat_data["base_stat"]
+
+    formatted_stats["total"] = sum(formatted_stats.values())
+
+    return formatted_stats
+
+
 def get_pokemon_info(pokemon_id):
     url = f"https://pokeapi.co/api/v2/pokemon/{pokemon_id}"
     res_pokemon_info = requests.get(url)
@@ -38,7 +48,8 @@ def get_pokemon_info(pokemon_id):
                 "weight": pokemon_data["weight"]
             },
             #"abilities": [ability["ability"]["name"] for ability in pokemon_data["abilities"]], 
-            "types": [type_data["type"]["name"] for type_data in pokemon_data["types"]]
+            "types": [type_data["type"]["name"] for type_data in pokemon_data["types"]],
+            "stats": format_stats_data(pokemon_data["stats"])
         }
 
         # Download pokemon cry and sprites only if they dont exist
@@ -76,11 +87,11 @@ def main():
         ]
     )
 
-    for i in range(pkm_id_start, pkm_id_end+1): 
-        pokemon_info = get_pokemon_info(i)
-        with open (f"../../static/pokemon/info/{i}.json", "w") as output_file: 
+    for pokemon_id in range(pkm_id_start, pkm_id_end+1): 
+        pokemon_info = get_pokemon_info(pokemon_id)
+        with open (f"../../static/pokemon/info/{pokemon_id}.json", "w") as output_file: 
             json.dump(pokemon_info, output_file)
-        print(f"INFO: Se ha guardado el archivo '{i}.json' correctamente!")
+        print(f"INFO: Se ha guardado el archivo '{pokemon_id}.json' correctamente!")
         
 
 if __name__ == '__main__':

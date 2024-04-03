@@ -72,6 +72,37 @@
                             </div>
                         </div> 
                     </div>
+                    <div class="col-lg-4 gy-5">
+                        <div class="card">
+                            <div class="card-body">
+                                <span class="card-title"><h4><strong>Estadísticas base</strong></h4></span>
+                                <br>
+                                <table id="stats-table" class="table table-responsive">
+                                    <tbody>
+                                        {% for stat_name, stat_value in pokemon_info.stats.items() %}
+                                            {% if stat_name != 'Total' %}
+                                                <tr>
+                                                    <th scope="row" class="col text-end">{{ stat_name }}</th>
+                                                    <td class="col-2 text-end">{{ stat_value }}</td>
+                                                    <td>
+                                                        <div class="progress">
+                                                            <div class="progress-bar" role="progressbar" style="width: {{ ((stat_value / 255) * 100)|int }}%" aria-valuenow="{{ stat_value }}" aria-valuemin="1" aria-valuemax="100"></div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            {% else %}
+                                                <tr>
+                                                    <th scope="row" class="col-1 text-end">{{ stat_name }}</th>
+                                                    <td class="col-2 text-end">{{ stat_value }}</td>
+                                                    <td></td>
+                                                </tr>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div> 
+                    </div>
                 </div>
         </main>
         <script src="{{ url_for('static', filename='bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js') }}"></script>

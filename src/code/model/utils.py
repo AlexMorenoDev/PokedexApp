@@ -25,3 +25,19 @@ def format_pokemon_types(pokemon_types):
         formatted_types.append([element, target_type[0], target_type[1]])
 
     return formatted_types
+
+
+def format_pokemon_stats(pokemon_stats):
+    stats_dict = {
+        "hp": "HP", "attack": "Ataque", 
+        "defense": "Defensa", "special-attack": "At. Esp.", 
+        "special-defense": "Def. Esp.", "speed": "Velocidad",
+        "total": "Total"
+    }
+
+    formatted_stats = {}
+    for stat_name, stat_value in pokemon_stats.items():
+        target_stat = stats_dict[stat_name]
+        formatted_stats[target_stat] = stat_value
+
+    return formatted_stats

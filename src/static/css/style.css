@@ -47,3 +47,15 @@ html {
     margin-top: 20px;
     margin-bottom: 20px;
 }
+
+.progress {
+    margin-top: 4px;
+}
+
+.table > :not(caption) > * > * {
+    border-top-width: 1px;
+}
+
+#stats-table > tbody > tr > td.col-2.text-end {
+    padding-right: 20px;
+}
