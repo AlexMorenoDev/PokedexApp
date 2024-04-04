@@ -27,6 +27,10 @@ html {
    padding-bottom: 7px;
 }
 
+.card-subtitle.text-body-secondary {
+    padding-left: 1px;
+}
+
 .btn-dark {
     background-color: #484848;
 }
@@ -58,4 +62,17 @@ html {
 
 #stats-table > tbody > tr > td.col-2.text-end {
     padding-right: 20px;
+}
+
+.p-no-bottom-margin {
+    margin-bottom: 0;
+}
+
+.tooltip .tooltip-inner {
+    text-align: left;
+}
+
+/* Added to the tooltip in 'pokemon_detail.js' */
+.custom-white-space-tooltip.tooltip > .tooltip-inner {
+    white-space: break-spaces;
 }

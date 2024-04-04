@@ -37,7 +37,7 @@
                                 <h6 class="card-subtitle text-body-secondary">{{ pokemon_info.id }}</h6>
                                 <div class="row">
                                     <div class="col">
-                                        <span class="card-title"><h4><strong class="pokemon-name">{{ pokemon_info.name }}</strong></h4></span>
+                                        <span class="card-title"><h3><strong class="pokemon-name">{{ pokemon_info.name }}</strong></h3></span>
                                     </div>
                                     <div class="col-auto">
                                         {% for type in pokemon_info.types %}
@@ -46,25 +46,26 @@
                                     </div>            
                                 </div>
                                 <p>{{ pokemon_info.desc }}</p>
-                                <br>
                                 <table class="table table-bordered table-responsive">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col" class="w-50">Característica</td>
-                                            <th scope="col">Valor</td>
-                                        </tr>
-                                    </thead>
                                     <tbody>
                                         {% for value in pokemon_info.attributes.values() %}
                                             <tr>
-                                                <td>{{ value[2] }}</th>
-                                                <td>{{ value[0] }} {{ value[1] }}</th>
+                                                <th class="align-middle">{{ value[2] }}</th>
+                                                <td class="align-middle">{{ value[0] }} {{ value[1] }}</td>
                                             </tr>
                                         {% endfor %}
+                                        
+                                        <tr>
+                                            <th class="align-middle col-4">Habilidades</th>
+                                            <td class="align-middle">
+                                                {% for ability in pokemon_info.abilities %}
+                                                    <p class="p-no-bottom-margin">{{ ability[0] }} {{ ability[2] }} <i class="fa fa-question-circle" style="font-size: 15px;" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ ability[1] }}"></i></p>
+                                                {% endfor %}
+                                            </td>
+                                        </tr>
                                     </tbody>
                                 </table>
-                                <br>
-                                <h6><b>Grito</b>&nbsp;&nbsp;<i class="fa fa-volume-up" aria-hidden="true"></i></h6>
+                                <h4><b>Grito</b>&nbsp;&nbsp;<i class="fa fa-volume-up" aria-hidden="true"></i></h4>
                                 <audio controls id="pokemon-cry" class="w-100">
                                     <source src="{{ url_for('static', filename='pokemon/cries/mp3/' + pokemon_info.id + '.mp3') }}" type="audio/mpeg">
                                     Su navegador no es compatible con el formato del audio.

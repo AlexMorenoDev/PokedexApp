@@ -41,4 +41,11 @@ $(document).ready(function () {
         current_bar.css("background-color", color);
         
     });
+
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl, {
+            'customClass': 'custom-white-space-tooltip'
+        })
+    });
 });

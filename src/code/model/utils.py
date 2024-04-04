@@ -29,7 +29,7 @@ def format_pokemon_types(pokemon_types):
 
 def format_pokemon_stats(pokemon_stats):
     stats_dict = {
-        "hp": "HP", "attack": "Ataque", 
+        "hp": "PS", "attack": "Ataque", 
         "defense": "Defensa", "special-attack": "At. Esp.", 
         "special-defense": "Def. Esp.", "speed": "Velocidad",
         "total": "Total"
