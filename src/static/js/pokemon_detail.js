@@ -1,13 +1,16 @@
 $(document).ready(function () {
+    /* Format pokemon id */
     $(".card-subtitle").each(function () {
         var item_text = $(this).text();
         item_text = item_text.padStart(3, '0');
         $(this).text("N.º " + item_text);
     });
 
+    /* Set audio element volume */
     var audio = document.getElementById("pokemon-cry");
     audio.volume = 0.3;
 
+    /* Swap pokemon image */
     $("#toggle-pokemon-image-button").click(function () {
         var pokemon_image = $("#pokemon-image");
         var current_url = pokemon_image.attr("src");
@@ -18,6 +21,7 @@ $(document).ready(function () {
         }
     });
 
+    /* Set progress bar background color */
     $(".progress-bar").each(function() {
         current_bar = $(this);
         bar_value = current_bar.attr("aria-valuenow");
@@ -42,6 +46,7 @@ $(document).ready(function () {
         
     });
 
+    /* Initialize tooltip */
     var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
     var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
         return new bootstrap.Tooltip(tooltipTriggerEl, {

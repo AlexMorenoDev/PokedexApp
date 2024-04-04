@@ -24,8 +24,6 @@ def get_all_pokemon(target_dir):
             pokemon_info["name"] = pokemon_info_temp.get("name").capitalize()
             pokemon_info["types"] = utils.format_pokemon_types(pokemon_info_temp.get("types"))
             pokemon_list.append(pokemon_info)
-        else:
-            pokemon_list.append(None)
     
     return pokemon_list
 
