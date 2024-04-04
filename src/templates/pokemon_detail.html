@@ -1,114 +1,107 @@
-<!DOCTYPE html>
-<html lang="es">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Pokedex - {{ pokemon_info.name }}</title>
-        <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap-5.0.2-dist/css/bootstrap.min.css') }}">
-        <link rel="stylesheet" href="{{ url_for('static', filename='font-awesome-4.7.0/css/font-awesome.min.css') }}">
-        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-        <link rel="stylesheet" href="{{ url_for('static', filename='css/pokemon_types.css') }}">
-        <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
-    </head>
-    <body>
-        <main>
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-4 gy-5">
-                        <div class="card">
-                            <img src="{{ url_for('static', filename='pokemon/images/normal/' + pokemon_info.id + '.png') }}" id="pokemon-image" class="card-img-top" style="background-color: {{ pokemon_info.types[0][2] }};" alt="Imagen no encontrada">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col">
-                                        {% if pokemon_info.id|int > 1 %}
-                                            <a href="/pokemon/{{ pokemon_info.id|int - 1 }}"><button type="button" class="btn btn-dark btn-sm"><i class="fa fa-arrow-left"></i></button></a>
-                                        {% endif %}
-                                        {% if (pokemon_info.id|int) < pokemon_info.total_pokemon_count %}
-                                            <a href="/pokemon/{{ pokemon_info.id|int + 1 }}"><button type="button" class="btn btn-dark btn-sm"><i class="fa fa-arrow-right"></i></button></a>
-                                        {% endif %}
-                                    </div>
-                                    <div class="col-auto">
-                                        <button type="button" id="toggle-pokemon-image-button" class="btn btn-dark btn-sm"><i class="fa fa-star"></i></button>
-                                        <a href="/"><button type="button" class="btn btn-dark btn-sm"><i class="fa fa-home"></i></i></button></a>
-                                    </div>
-                                </div>
-                                <hr>
-                                <h6 class="card-subtitle text-body-secondary">{{ pokemon_info.id }}</h6>
-                                <div class="row">
-                                    <div class="col">
-                                        <span class="card-title"><h3><strong class="pokemon-name">{{ pokemon_info.name }}</strong></h3></span>
-                                    </div>
-                                    <div class="col-auto">
-                                        {% for type in pokemon_info.types %}
-                                            <p class="type type-{{ type[0] }} type-sm">{{ type[1] }}</p>
+{% extends "layouts/base.html" %}
+
+{% block title %}<title>Pokedex - {{ pokemon_info.name }}</title>{% endblock %}
+{% block not_common_links %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/pokemon_types.css') }}">
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-4 gy-5">
+                <div class="card">
+                    <img src="{{ url_for('static', filename='pokemon/images/normal/' + pokemon_info.id + '.png') }}" id="pokemon-image" class="card-img-top" style="background-color: {{ pokemon_info.types[0][2] }};" alt="Imagen no encontrada">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col">
+                                {% if pokemon_info.id|int > 1 %}
+                                    <a href="/pokemon/{{ pokemon_info.id|int - 1 }}"><button type="button" class="btn btn-dark btn-sm"><i class="fa fa-arrow-left"></i></button></a>
+                                {% endif %}
+                                {% if (pokemon_info.id|int) < pokemon_info.total_pokemon_count %}
+                                    <a href="/pokemon/{{ pokemon_info.id|int + 1 }}"><button type="button" class="btn btn-dark btn-sm"><i class="fa fa-arrow-right"></i></button></a>
+                                {% endif %}
+                            </div>
+                            <div class="col-auto">
+                                <button type="button" id="toggle-pokemon-image-button" class="btn btn-dark btn-sm"><i class="fa fa-star"></i></button>
+                                <a href="/"><button type="button" class="btn btn-dark btn-sm"><i class="fa fa-home"></i></i></button></a>
+                            </div>
+                        </div>
+                        <hr>
+                        <h6 class="card-subtitle text-body-secondary">{{ pokemon_info.id }}</h6>
+                        <div class="row">
+                            <div class="col">
+                                <span class="card-title"><h3><strong class="pokemon-name">{{ pokemon_info.name }}</strong></h3></span>
+                            </div>
+                            <div class="col-auto">
+                                {% for type in pokemon_info.types %}
+                                    <p class="type type-{{ type[0] }} type-sm">{{ type[1] }}</p>
+                                {% endfor %}
+                            </div>            
+                        </div>
+                        <p>{{ pokemon_info.desc }}</p>
+                        <table class="table table-bordered table-responsive">
+                            <tbody>
+                                {% for value in pokemon_info.attributes.values() %}
+                                    <tr>
+                                        <th class="align-middle">{{ value[2] }}</th>
+                                        <td class="align-middle">{{ value[0] }} {{ value[1] }}</td>
+                                    </tr>
+                                {% endfor %}
+                                
+                                <tr>
+                                    <th class="align-middle col-4">Habilidades</th>
+                                    <td class="align-middle">
+                                        {% for ability in pokemon_info.abilities %}
+                                            <p class="p-no-bottom-margin">{{ ability[0] }} {{ ability[2] }} <i class="fa fa-question-circle" style="font-size: 15px;" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ ability[1] }}"></i></p>
                                         {% endfor %}
-                                    </div>            
-                                </div>
-                                <p>{{ pokemon_info.desc }}</p>
-                                <table class="table table-bordered table-responsive">
-                                    <tbody>
-                                        {% for value in pokemon_info.attributes.values() %}
-                                            <tr>
-                                                <th class="align-middle">{{ value[2] }}</th>
-                                                <td class="align-middle">{{ value[0] }} {{ value[1] }}</td>
-                                            </tr>
-                                        {% endfor %}
-                                        
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <h4><b>Grito</b>&nbsp;&nbsp;<i class="fa fa-volume-up" aria-hidden="true"></i></h4>
+                        <audio controls id="pokemon-cry" class="w-100">
+                            <source src="{{ url_for('static', filename='pokemon/cries/mp3/' + pokemon_info.id + '.mp3') }}" type="audio/mpeg">
+                            Su navegador no es compatible con el formato del audio.
+                        </audio>
+                    </div>
+                </div> 
+            </div>
+            <div class="col-lg-4 gy-5">
+                <div class="card">
+                    <div class="card-body">
+                        <span class="card-title"><h4><strong>Estadísticas base</strong></h4></span>
+                        <br>
+                        <table id="stats-table" class="table table-responsive">
+                            <tbody>
+                                {% for stat_name, stat_value in pokemon_info.stats.items() %}
+                                    {% if stat_name != 'Total' %}
                                         <tr>
-                                            <th class="align-middle col-4">Habilidades</th>
-                                            <td class="align-middle">
-                                                {% for ability in pokemon_info.abilities %}
-                                                    <p class="p-no-bottom-margin">{{ ability[0] }} {{ ability[2] }} <i class="fa fa-question-circle" style="font-size: 15px;" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ ability[1] }}"></i></p>
-                                                {% endfor %}
+                                            <th scope="row" class="col text-end">{{ stat_name }}</th>
+                                            <td class="col-2 text-end">{{ stat_value }}</td>
+                                            <td>
+                                                <div class="progress">
+                                                    <div class="progress-bar" role="progressbar" style="width: {{ ((stat_value / 255) * 100)|int }}%" aria-valuenow="{{ stat_value }}" aria-valuemin="1" aria-valuemax="100"></div>
+                                                </div>
                                             </td>
                                         </tr>
-                                    </tbody>
-                                </table>
-                                <h4><b>Grito</b>&nbsp;&nbsp;<i class="fa fa-volume-up" aria-hidden="true"></i></h4>
-                                <audio controls id="pokemon-cry" class="w-100">
-                                    <source src="{{ url_for('static', filename='pokemon/cries/mp3/' + pokemon_info.id + '.mp3') }}" type="audio/mpeg">
-                                    Su navegador no es compatible con el formato del audio.
-                                </audio>
-                            </div>
-                        </div> 
-                    </div>
-                    <div class="col-lg-4 gy-5">
-                        <div class="card">
-                            <div class="card-body">
-                                <span class="card-title"><h4><strong>Estadísticas base</strong></h4></span>
-                                <br>
-                                <table id="stats-table" class="table table-responsive">
-                                    <tbody>
-                                        {% for stat_name, stat_value in pokemon_info.stats.items() %}
-                                            {% if stat_name != 'Total' %}
-                                                <tr>
-                                                    <th scope="row" class="col text-end">{{ stat_name }}</th>
-                                                    <td class="col-2 text-end">{{ stat_value }}</td>
-                                                    <td>
-                                                        <div class="progress">
-                                                            <div class="progress-bar" role="progressbar" style="width: {{ ((stat_value / 255) * 100)|int }}%" aria-valuenow="{{ stat_value }}" aria-valuemin="1" aria-valuemax="100"></div>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                            {% else %}
-                                                <tr>
-                                                    <th scope="row" class="col-1 text-end">{{ stat_name }}</th>
-                                                    <td class="col-2 text-end">{{ stat_value }}</td>
-                                                    <td></td>
-                                                </tr>
-                                            {% endif %}
-                                        {% endfor %}
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div> 
+                                    {% else %}
+                                        <tr>
+                                            <th scope="row" class="col-1 text-end">{{ stat_name }}</th>
+                                            <td class="col-2 text-end">{{ stat_value }}</td>
+                                            <td></td>
+                                        </tr>
+                                    {% endif %}
+                                {% endfor %}
+                            </tbody>
+                        </table>
                     </div>
                 </div>
-        </main>
-        <script src="{{ url_for('static', filename='bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js') }}"></script>
-        <script src="{{ url_for('static', filename='js/jquery-3.7.1.slim.min.js') }}"></script>
-        <script src="{{ url_for('static', filename='js/pokemon_detail.js') }}"></script>
-    </body>
-    
-</html>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block not_common_scripts %}
+    <script src="{{ url_for('static', filename='js/pokemon_detail.js') }}"></script>
+{% endblock %}

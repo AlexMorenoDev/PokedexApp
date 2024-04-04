@@ -21,7 +21,7 @@ def get_all_pokemon(target_dir):
             with open(filename, 'r') as json_file:
                 pokemon_info_temp = json.load(json_file)
             pokemon_info["id"] = str(pokemon_info_temp.get("id"))
-            pokemon_info["name"] = pokemon_info_temp.get("name").capitalize()
+            pokemon_info["name"] = utils.format_pokemon_name(pokemon_info_temp.get("name"))
             pokemon_info["types"] = utils.format_pokemon_types(pokemon_info_temp.get("types"))
             pokemon_list.append(pokemon_info)
     
@@ -33,7 +33,7 @@ def get_pokemon_detail(filepath):
         with open(filepath, 'r') as json_file:
             pokemon_info = json.load(json_file)
         pokemon_info["id"] = str(pokemon_info.get("id"))
-        pokemon_info["name"] = pokemon_info.get("name").capitalize()
+        pokemon_info["name"] = utils.format_pokemon_name(pokemon_info.get("name"))
         pokemon_info["types"] = utils.format_pokemon_types(pokemon_info.get("types"))
         pokemon_info["attributes"]["height"] = [str(float(pokemon_info.get("attributes").get("height")) / 10), "m", "Altura"]
         pokemon_info["attributes"]["weight"] = [str(float(pokemon_info.get("attributes").get("weight")) / 10), "kg", "Peso"]

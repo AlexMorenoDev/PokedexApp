@@ -9,17 +9,19 @@ def create_folders_structure(folder_list):
             
 
 def save_file_from_url(url, output_file):
-    if not os.path.isfile(output_file):
-        res = requests.get(url)
-        if res.status_code == 200:
-            with open(output_file, "wb") as f:
-                f.write(res.content)
-            print(f"INFO: Se ha descargado el archivo correctamente desde '{url}'")
+    if url:
+        if not os.path.isfile(output_file):
+            res = requests.get(url)
+            if res.status_code == 200:
+                with open(output_file, "wb") as f:
+                    f.write(res.content)
+                print(f"INFO: Se ha descargado el archivo correctamente desde '{url}'")
+            else:
+                print(f"ERROR: Hay un problema al descargar la archivo del siguiente enlace:\n{url}")
         else:
-            print(f"ERROR: Hay un problema al descargar la archivo del siguiente enlace:\n{url}")
+            print("INFO: El archivo que se quiere descargar ya existe. Omitiendo...")
     else:
-        print("INFO: El archivo que se quiere descargar ya existe. Omitiendo...")
-
+        print("INFO: No se ha proporcionado URL. Omitiendo...")
 
 def get_translated_field(target_list, target_field, lang):
     for entry in target_list:
