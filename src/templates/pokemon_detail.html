@@ -97,6 +97,50 @@
                         </table>
                     </div>
                 </div>
+                <br>
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col">
+                                <span class="card-title"><h4><strong>Sprites</strong></h4></span>
+                            </div>
+                            <div class="col-auto">
+                                <button type="button" id="toggle-pokemon-sprites-button" class="btn btn-dark btn-sm"><i class="fa fa-star"></i></button>
+                                <button type="button" id="rotate-pokemon-sprites-button" class="btn btn-dark btn-sm"><i class="fa fa-repeat"></i></button>
+                            </div>
+                        </div>
+                        <hr>
+                        <table class="table table-bordered table-responsive">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th class="align-middle text-center">Macho</th>
+                                    <th class="align-middle text-center">Hembra</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th class="align-middle text-center">Normal</th>
+                                    <td class="align-middle text-center">
+                                        <img class="pokemon-sprite" src="{{ url_for('static', filename='pokemon/sprites/no_animated/normal/front/male/' + pokemon_info.id + '.png') }}" alt="N/A">
+                                    </td>
+                                    <td class="align-middle text-center">
+                                        <img class="pokemon-sprite" src="{{ url_for('static', filename='pokemon/sprites/no_animated/normal/front/female/' + pokemon_info.id + '.png') }}" alt="N/A">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th class="align-middle col-3 text-center">Animado</th>
+                                    <td class="align-middle text-center">
+                                        <img class="pokemon-sprite" src="{{ url_for('static', filename='pokemon/sprites/animated/normal/front/male/' + pokemon_info.id + '.gif') }}" alt="N/A">
+                                    </td>
+                                    <td class="align-middle text-center">
+                                        <img class="pokemon-sprite" src="{{ url_for('static', filename='pokemon/sprites/animated/normal/front/female/' + pokemon_info.id + '.gif') }}" alt="N/A">
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

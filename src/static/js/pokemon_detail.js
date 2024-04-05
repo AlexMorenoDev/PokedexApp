@@ -12,13 +12,17 @@ $(document).ready(function () {
 
     /* Swap pokemon image */
     $("#toggle-pokemon-image-button").click(function () {
-        var pokemon_image = $("#pokemon-image");
-        var current_url = pokemon_image.attr("src");
-        if (current_url.split("/")[4] === "normal") {
-            pokemon_image.attr("src", current_url.replace("normal", "shiny"))
-        } else {
-            pokemon_image.attr("src", current_url.replace("shiny", "normal"))
-        }
+        update_image_src("#pokemon-image", 4, "normal", "shiny");
+    });
+
+    /* Swap pokemon sprites */
+    $("#toggle-pokemon-sprites-button").click(function () {
+        update_image_src(".pokemon-sprite", 5, "normal", "shiny");
+    });
+
+    /* Rotate pokemon sprites */
+    $("#rotate-pokemon-sprites-button").click(function () {
+        update_image_src(".pokemon-sprite", 6, "front", "back");
     });
 
     /* Set progress bar background color */
@@ -54,3 +58,14 @@ $(document).ready(function () {
         })
     });
 });
+
+function update_image_src(selector, url_split_index, val_1, val_2) {
+    $(selector).each(function () {
+        var current_url = $(this).attr("src");
+        if (current_url.split("/")[url_split_index] === val_1) {
+            $(this).attr("src", current_url.replace(val_1, val_2))
+        } else {
+            $(this).attr("src", current_url.replace(val_2, val_1))
+        }
+    });
+}

@@ -61,35 +61,67 @@ def get_pokemon_info(pokemon_id, json_file_exists):
         # Download pokemon sprites if they dont exist
         utils.save_file_from_url(
             pokemon_data["sprites"]["versions"]["generation-v"]["black-white"]["animated"]["front_default"],
-            f"../../static/pokemon/sprites/animated/normal/male/{pokemon_id}.gif"
+            f"../../static/pokemon/sprites/animated/normal/front/male/{pokemon_id}.gif"
         )
         utils.save_file_from_url(
             pokemon_data["sprites"]["versions"]["generation-v"]["black-white"]["animated"]["front_shiny"],
-            f"../../static/pokemon/sprites/animated/shiny/male/{pokemon_id}.gif"
+            f"../../static/pokemon/sprites/animated/shiny/front/male/{pokemon_id}.gif"
         )
         utils.save_file_from_url(
             pokemon_data["sprites"]["versions"]["generation-v"]["black-white"]["animated"]["front_female"],
-            f"../../static/pokemon/sprites/animated/normal/female/{pokemon_id}.gif"
+            f"../../static/pokemon/sprites/animated/normal/front/female/{pokemon_id}.gif"
         )
         utils.save_file_from_url(
              pokemon_data["sprites"]["versions"]["generation-v"]["black-white"]["animated"]["front_shiny_female"],
-             f"../../static/pokemon/sprites/animated/shiny/female/{pokemon_id}.gif"
+             f"../../static/pokemon/sprites/animated/shiny/front/female/{pokemon_id}.gif"
+        )
+        utils.save_file_from_url(
+            pokemon_data["sprites"]["versions"]["generation-v"]["black-white"]["animated"]["back_default"],
+            f"../../static/pokemon/sprites/animated/normal/back/male/{pokemon_id}.gif"
+        )
+        utils.save_file_from_url(
+            pokemon_data["sprites"]["versions"]["generation-v"]["black-white"]["animated"]["back_shiny"],
+            f"../../static/pokemon/sprites/animated/shiny/back/male/{pokemon_id}.gif"
+        )
+        utils.save_file_from_url(
+            pokemon_data["sprites"]["versions"]["generation-v"]["black-white"]["animated"]["back_female"],
+            f"../../static/pokemon/sprites/animated/normal/back/female/{pokemon_id}.gif"
+        )
+        utils.save_file_from_url(
+             pokemon_data["sprites"]["versions"]["generation-v"]["black-white"]["animated"]["back_shiny_female"],
+             f"../../static/pokemon/sprites/animated/shiny/back/female/{pokemon_id}.gif"
         )
         utils.save_file_from_url(
             pokemon_data["sprites"]["versions"]["generation-v"]["black-white"]["front_default"],
-            f"../../static/pokemon/sprites/no_animated/normal/male/{pokemon_id}.png"
+            f"../../static/pokemon/sprites/no_animated/normal/front/male/{pokemon_id}.png"
         )
         utils.save_file_from_url(
             pokemon_data["sprites"]["versions"]["generation-v"]["black-white"]["front_shiny"],
-            f"../../static/pokemon/sprites/no_animated/shiny/male/{pokemon_id}.png"
+            f"../../static/pokemon/sprites/no_animated/shiny/front/male/{pokemon_id}.png"
         )
         utils.save_file_from_url(
             pokemon_data["sprites"]["versions"]["generation-v"]["black-white"]["front_female"],
-            f"../../static/pokemon/sprites/no_animated/normal/female/{pokemon_id}.png"
+            f"../../static/pokemon/sprites/no_animated/normal/front/female/{pokemon_id}.png"
         )
         utils.save_file_from_url(
             pokemon_data["sprites"]["versions"]["generation-v"]["black-white"]["front_shiny_female"],
-            f"../../static/pokemon/sprites/no_animated/shiny/female/{pokemon_id}.png"
+            f"../../static/pokemon/sprites/no_animated/shiny/front/female/{pokemon_id}.png"
+        )
+        utils.save_file_from_url(
+            pokemon_data["sprites"]["versions"]["generation-v"]["black-white"]["back_default"],
+            f"../../static/pokemon/sprites/no_animated/normal/back/male/{pokemon_id}.png"
+        )
+        utils.save_file_from_url(
+            pokemon_data["sprites"]["versions"]["generation-v"]["black-white"]["back_shiny"],
+            f"../../static/pokemon/sprites/no_animated/shiny/back/male/{pokemon_id}.png"
+        )
+        utils.save_file_from_url(
+            pokemon_data["sprites"]["versions"]["generation-v"]["black-white"]["back_female"],
+            f"../../static/pokemon/sprites/no_animated/normal/back/female/{pokemon_id}.png"
+        )
+        utils.save_file_from_url(
+            pokemon_data["sprites"]["versions"]["generation-v"]["black-white"]["back_shiny_female"],
+            f"../../static/pokemon/sprites/no_animated/shiny/back/female/{pokemon_id}.png"
         )
         
         if not json_file_exists:
@@ -120,14 +152,22 @@ def main():
         "../../static/pokemon/cries/ogg/", 
         "../../static/pokemon/images/normal/", 
         "../../static/pokemon/images/shiny/",
-        "../../static/pokemon/sprites/no_animated/normal/male/",
-        "../../static/pokemon/sprites/no_animated/normal/female/",
-        "../../static/pokemon/sprites/no_animated/shiny/male/",
-        "../../static/pokemon/sprites/no_animated/shiny/female/",
-        "../../static/pokemon/sprites/animated/normal/male/",
-        "../../static/pokemon/sprites/animated/normal/female/",
-        "../../static/pokemon/sprites/animated/shiny/male/",
-        "../../static/pokemon/sprites/animated/shiny/female/"
+        "../../static/pokemon/sprites/no_animated/normal/front/male/",
+        "../../static/pokemon/sprites/no_animated/normal/back/male/",
+        "../../static/pokemon/sprites/no_animated/normal/front/female/",
+        "../../static/pokemon/sprites/no_animated/normal/back/female/",
+        "../../static/pokemon/sprites/no_animated/shiny/front/male/",
+        "../../static/pokemon/sprites/no_animated/shiny/back/male/",
+        "../../static/pokemon/sprites/no_animated/shiny/front/female/",
+        "../../static/pokemon/sprites/no_animated/shiny/back/female/",
+        "../../static/pokemon/sprites/animated/normal/front/male/",
+        "../../static/pokemon/sprites/animated/normal/back/male/",
+        "../../static/pokemon/sprites/animated/normal/front/female/",
+        "../../static/pokemon/sprites/animated/normal/back/female/",
+        "../../static/pokemon/sprites/animated/shiny/front/male/",
+        "../../static/pokemon/sprites/animated/shiny/back/male/",
+        "../../static/pokemon/sprites/animated/shiny/front/female/",
+        "../../static/pokemon/sprites/animated/shiny/back/female/"
         ]
     )
 
