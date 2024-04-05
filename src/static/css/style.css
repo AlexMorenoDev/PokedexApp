@@ -17,6 +17,16 @@ html {
         2px 2px 0 #2775bb;
     text-shadow: #2775bb 0px 0px 5px, #2775bb 0px 0px 5px, #2775bb 0px 0px 5px, #2775bb 0px 0px 5px, #2775bb 0px 0px 5px, #2775bb 0px 0px 5px;
     -webkit-font-smoothing: antialiased;
+    text-align: center;
+    vertical-align: middle;
+    display: inline-block;
+}
+
+.main-title-image {
+    width: 100px; 
+    display: inline-block; 
+    padding-top: 12px; 
+    margin-right: 10px;
 }
 
 .pokemon-detail-link:hover {
