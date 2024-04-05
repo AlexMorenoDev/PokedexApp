@@ -56,8 +56,10 @@ html {
     margin-top: 4px;
 }
 
-.table > :not(caption) > * > * {
+.table > :not(caption) {
     border-top-width: 1px;
+    border-right-width: 1px;
+    border-left-width: 1px;
 }
 
 #stats-table > tbody > tr > td.col-2.text-end {

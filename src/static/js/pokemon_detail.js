@@ -8,7 +8,7 @@ $(document).ready(function () {
 
     /* Set audio element volume */
     var audio = document.getElementById("pokemon-cry");
-    audio.volume = 0.3;
+    audio.volume = 0.25;
 
     /* Swap pokemon image */
     $("#toggle-pokemon-image-button").click(function () {
