@@ -2,6 +2,7 @@ import os
 import requests
 import json
 import utils as utils
+import variables as vrs
 
 
 def format_stats_data(stats):
@@ -59,70 +60,31 @@ def get_pokemon_info(pokemon_id, json_file_exists):
         utils.save_file_from_url(pokemon_data["sprites"]["other"]["official-artwork"]["front_shiny"], f"../../static/pokemon/images/shiny/{pokemon_id}.png" )
 
         # Download pokemon sprites if they dont exist
-        utils.save_file_from_url(
-            pokemon_data["sprites"]["versions"]["generation-v"]["black-white"]["animated"]["front_default"],
-            f"../../static/pokemon/sprites/animated/normal/front/male/{pokemon_id}.gif"
-        )
-        utils.save_file_from_url(
-            pokemon_data["sprites"]["versions"]["generation-v"]["black-white"]["animated"]["front_shiny"],
-            f"../../static/pokemon/sprites/animated/shiny/front/male/{pokemon_id}.gif"
-        )
-        utils.save_file_from_url(
-            pokemon_data["sprites"]["versions"]["generation-v"]["black-white"]["animated"]["front_female"],
-            f"../../static/pokemon/sprites/animated/normal/front/female/{pokemon_id}.gif"
-        )
-        utils.save_file_from_url(
-             pokemon_data["sprites"]["versions"]["generation-v"]["black-white"]["animated"]["front_shiny_female"],
-             f"../../static/pokemon/sprites/animated/shiny/front/female/{pokemon_id}.gif"
-        )
-        utils.save_file_from_url(
-            pokemon_data["sprites"]["versions"]["generation-v"]["black-white"]["animated"]["back_default"],
-            f"../../static/pokemon/sprites/animated/normal/back/male/{pokemon_id}.gif"
-        )
-        utils.save_file_from_url(
-            pokemon_data["sprites"]["versions"]["generation-v"]["black-white"]["animated"]["back_shiny"],
-            f"../../static/pokemon/sprites/animated/shiny/back/male/{pokemon_id}.gif"
-        )
-        utils.save_file_from_url(
-            pokemon_data["sprites"]["versions"]["generation-v"]["black-white"]["animated"]["back_female"],
-            f"../../static/pokemon/sprites/animated/normal/back/female/{pokemon_id}.gif"
-        )
-        utils.save_file_from_url(
-             pokemon_data["sprites"]["versions"]["generation-v"]["black-white"]["animated"]["back_shiny_female"],
-             f"../../static/pokemon/sprites/animated/shiny/back/female/{pokemon_id}.gif"
-        )
-        utils.save_file_from_url(
-            pokemon_data["sprites"]["versions"]["generation-v"]["black-white"]["front_default"],
-            f"../../static/pokemon/sprites/no_animated/normal/front/male/{pokemon_id}.png"
-        )
-        utils.save_file_from_url(
-            pokemon_data["sprites"]["versions"]["generation-v"]["black-white"]["front_shiny"],
-            f"../../static/pokemon/sprites/no_animated/shiny/front/male/{pokemon_id}.png"
-        )
-        utils.save_file_from_url(
-            pokemon_data["sprites"]["versions"]["generation-v"]["black-white"]["front_female"],
-            f"../../static/pokemon/sprites/no_animated/normal/front/female/{pokemon_id}.png"
-        )
-        utils.save_file_from_url(
-            pokemon_data["sprites"]["versions"]["generation-v"]["black-white"]["front_shiny_female"],
-            f"../../static/pokemon/sprites/no_animated/shiny/front/female/{pokemon_id}.png"
-        )
-        utils.save_file_from_url(
-            pokemon_data["sprites"]["versions"]["generation-v"]["black-white"]["back_default"],
-            f"../../static/pokemon/sprites/no_animated/normal/back/male/{pokemon_id}.png"
-        )
-        utils.save_file_from_url(
-            pokemon_data["sprites"]["versions"]["generation-v"]["black-white"]["back_shiny"],
-            f"../../static/pokemon/sprites/no_animated/shiny/back/male/{pokemon_id}.png"
-        )
-        utils.save_file_from_url(
-            pokemon_data["sprites"]["versions"]["generation-v"]["black-white"]["back_female"],
-            f"../../static/pokemon/sprites/no_animated/normal/back/female/{pokemon_id}.png"
-        )
-        utils.save_file_from_url(
-            pokemon_data["sprites"]["versions"]["generation-v"]["black-white"]["back_shiny_female"],
-            f"../../static/pokemon/sprites/no_animated/shiny/back/female/{pokemon_id}.png"
-        )
+        for path in vrs.pokemon_dirs:
+            parts = path.split("/")
+            if parts[4] == "sprites":
+                sprite_type_selector = parts[7]
+                if parts[8] == "male":
+                    if parts[6] == "normal":
+                        sprite_type_selector += "_default"
+                    else:
+                        sprite_type_selector += "_shiny"
+                else:
+                    if parts[6] == "normal":
+                        sprite_type_selector += "_female"
+                    else:
+                        sprite_type_selector += "_shiny_female"
+
+                sprite_url = None
+                sprite_extension = None
+                if parts[5] == "animated":
+                    sprite_url = pokemon_data["sprites"]["versions"]["generation-v"]["black-white"]["animated"][sprite_type_selector]
+                    sprite_extension = ".gif"
+                else:
+                    sprite_url = pokemon_data["sprites"]["versions"]["generation-v"]["black-white"][sprite_type_selector]
+                    sprite_extension = ".png"
+
+                utils.save_file_from_url(sprite_url, path + str(pokemon_id) + sprite_extension)
         
         if not json_file_exists:
             # Get pokemon description
@@ -147,36 +109,13 @@ def main():
     # If pokemon info JSON files must be generated again set it to true
     remove_pokemon_info = False
 
-    utils.create_folders_structure([
-        "../../static/pokemon/info/",
-        "../../static/pokemon/cries/ogg/", 
-        "../../static/pokemon/images/normal/", 
-        "../../static/pokemon/images/shiny/",
-        "../../static/pokemon/sprites/no_animated/normal/front/male/",
-        "../../static/pokemon/sprites/no_animated/normal/back/male/",
-        "../../static/pokemon/sprites/no_animated/normal/front/female/",
-        "../../static/pokemon/sprites/no_animated/normal/back/female/",
-        "../../static/pokemon/sprites/no_animated/shiny/front/male/",
-        "../../static/pokemon/sprites/no_animated/shiny/back/male/",
-        "../../static/pokemon/sprites/no_animated/shiny/front/female/",
-        "../../static/pokemon/sprites/no_animated/shiny/back/female/",
-        "../../static/pokemon/sprites/animated/normal/front/male/",
-        "../../static/pokemon/sprites/animated/normal/back/male/",
-        "../../static/pokemon/sprites/animated/normal/front/female/",
-        "../../static/pokemon/sprites/animated/normal/back/female/",
-        "../../static/pokemon/sprites/animated/shiny/front/male/",
-        "../../static/pokemon/sprites/animated/shiny/back/male/",
-        "../../static/pokemon/sprites/animated/shiny/front/female/",
-        "../../static/pokemon/sprites/animated/shiny/back/female/"
-        ]
-    )
+    utils.create_folders_structure(vrs.pokemon_dirs)
 
-    pokemon_info_folder = "../../static/pokemon/info/"
     if remove_pokemon_info:
-        utils.remove_dir_files(pokemon_info_folder)
+        utils.remove_dir_files(vrs.pokemon_info_path)
 
     for pokemon_id in range(pkm_id_start, pkm_id_end+1): 
-        json_filepath = pokemon_info_folder + str(pokemon_id) + ".json"
+        json_filepath = vrs.pokemon_info_path + str(pokemon_id) + ".json"
         json_file_exists = os.path.isfile(json_filepath)
         pokemon_info = get_pokemon_info(pokemon_id, json_file_exists)
         if not json_file_exists:

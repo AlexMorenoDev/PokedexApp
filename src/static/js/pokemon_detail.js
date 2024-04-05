@@ -31,20 +31,27 @@ $(document).ready(function () {
         bar_value = current_bar.attr("aria-valuenow");
 
         color = null;
-        if (bar_value > 0 && bar_value <= 30) {
-            color = "#db0e0e";
-        } else if (bar_value > 30 && bar_value <= 50) {
-            color = "#ff7801";
-        } else if (bar_value > 50 && bar_value <= 70) {
-            color = "#ffd635";
-        } else if (bar_value > 70 && bar_value <= 110) {
-            color = "#98da14";
-        } else if (bar_value > 110 && bar_value <= 150) {
-            color = "#23cd5e";
-        } else if (bar_value > 150 && bar_value <= 180) {
-            color = "#3ab0c3";
-        } else {
-            color = "#a818f2";
+        switch (true) {
+            case (bar_value > 0 && bar_value <= 30):
+                color = "#db0e0e";
+                break;
+            case (bar_value > 30 && bar_value <= 50):
+                color = "#ff7801";
+                break;
+            case (bar_value > 50 && bar_value <= 70):
+                color = "#ffd635";
+                break;
+            case (bar_value > 70 && bar_value <= 110):
+                color = "#98da14";
+                break;
+            case (bar_value > 110 && bar_value <= 150):
+                color = "#23cd5e";
+                break;
+            case (bar_value > 150 && bar_value <= 180):
+                color = "#3ab0c3";
+                break;
+            default:
+                color = "#a818f2";
         }
         current_bar.css("background-color", color);
         
