@@ -23,6 +23,7 @@ def save_file_from_url(url, output_file):
     else:
         print("INFO: No se ha proporcionado URL. Omitiendo...")
 
+
 def get_translated_field(target_list, target_field, lang):
     for entry in target_list:
         if entry["language"]["name"] == lang:

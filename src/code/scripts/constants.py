@@ -1,6 +1,14 @@
 
+pkm_id_start = 1
+pkm_id_end = 151
+remove_pokemon_info = True # If pokemon info JSON files must be generated again set it to true
+remove_pokemon_evolution_chain = True # If pokemon evolution chain JSON files must be generated again set it to true
+
+pokemon_info_path = "../../static/pokemon/info/"
+pokemon_evolution_chains_path = "../../static/pokemon/evolution_chains/"
 pokemon_dirs = [
-    "../../static/pokemon/info/",
+    pokemon_info_path,
+    pokemon_evolution_chain_path,
     "../../static/pokemon/cries/ogg/", 
     "../../static/pokemon/images/normal/", 
     "../../static/pokemon/images/shiny/",
@@ -21,5 +29,3 @@ pokemon_dirs = [
     "../../static/pokemon/sprites/animated/shiny/front/female/",
     "../../static/pokemon/sprites/animated/shiny/back/female/"
 ]
-
-pokemon_info_path = "../../static/pokemon/info/"

@@ -1,4 +1,6 @@
 
+pokemon_evolution_chains_path = "../static/pokemon/evolution_chains/"
+
 # this dict contains type translation and type background color in hexadecimal format
 types_dict = {
     "normal": ["normal", "#f5f5f5"], "fire": ["fuego", "#fbd3d3"], "water": ["agua", "#bae4f0"],
