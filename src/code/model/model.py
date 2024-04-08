@@ -53,13 +53,16 @@ def get_pokemon_evolution_chain(evolution_chain_id):
     
     with open(filepath, 'r') as json_file:
         pokemon_evolution_chain = json.load(json_file)
+    pokemon_evolution_chain["id"] = str(pokemon_evolution_chain.get("id"))
     pokemon_evolution_chain["name"] = utils.format_pokemon_name(pokemon_evolution_chain.get("name"))
     pokemon_evolution_chain["types"] = utils.format_pokemon_types(pokemon_evolution_chain.get("types"))
 
     for evolution_1 in pokemon_evolution_chain["evolves_to"]:
+        evolution_1["id"] = str(evolution_1.get("id"))
         evolution_1["name"] = utils.format_pokemon_name(evolution_1.get("name"))
         evolution_1["types"] = utils.format_pokemon_types(evolution_1.get("types"))
         for evolution_2 in evolution_1["evolves_to"]:
+            evolution_2["id"] = str(evolution_2.get("id"))
             evolution_2["name"] = utils.format_pokemon_name(evolution_2.get("name"))
             evolution_2["types"] = utils.format_pokemon_types(evolution_2.get("types"))
 

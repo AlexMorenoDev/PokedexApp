@@ -8,7 +8,7 @@ pokemon_info_path = "../../static/pokemon/info/"
 pokemon_evolution_chains_path = "../../static/pokemon/evolution_chains/"
 pokemon_dirs = [
     pokemon_info_path,
-    pokemon_evolution_chain_path,
+    pokemon_evolution_chains_path,
     "../../static/pokemon/cries/ogg/", 
     "../../static/pokemon/images/normal/", 
     "../../static/pokemon/images/shiny/",

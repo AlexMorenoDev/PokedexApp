@@ -25,6 +25,11 @@ $(document).ready(function () {
         update_image_src(".pokemon-sprite", 6, "front", "back");
     });
 
+    /* Swap pokemon evolution chain images */
+    $("#toggle-pokemon-evolution-chain-images-button").click(function () {
+        update_image_src(".evolution-chain-img", 4, "normal", "shiny");
+    });
+
     /* Set progress bar background color */
     $(".progress-bar").each(function() {
         current_bar = $(this);

@@ -93,3 +93,26 @@ html {
 .custom-white-space-tooltip.tooltip > .tooltip-inner {
     white-space: break-spaces;
 }
+
+.evolution-chain-id {
+    font-size: 13px;
+    
+}
+
+.evolution-chain-name {
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+/* .evolution-chain-type {
+    font-size: 10px !important;
+    padding: 2px 6px !important;
+} */
+
+.evolution-chain-img {
+    width: 175px;
+    border-radius: 25%;
+    border: 4px solid #555;
+    margin: auto;
+}
+
