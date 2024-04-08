@@ -121,3 +121,7 @@ html {
     text-decoration: inherit;
 }
 
+.yellow-text:hover {
+    color: #ffc107 !important;
+}
+

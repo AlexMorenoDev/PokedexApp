@@ -1,8 +1,9 @@
 
 pkm_id_start = 1
-pkm_id_end = 151
-remove_pokemon_info = True # If pokemon info JSON files must be generated again set it to true
-remove_pokemon_evolution_chain = True # If pokemon evolution chain JSON files must be generated again set it to true
+#pkm_id_end = 151
+pkm_id_end = 1025
+remove_pokemon_info = False # If pokemon info JSON files must be generated again set it to true
+remove_pokemon_evolution_chain = False # If pokemon evolution chain JSON files must be generated again set it to true
 
 pokemon_info_path = "../../static/pokemon/info/"
 pokemon_evolution_chains_path = "../../static/pokemon/evolution_chains/"
