@@ -116,3 +116,8 @@ html {
     margin: auto;
 }
 
+.no-text-decoration {
+    color: inherit;
+    text-decoration: inherit;
+}
+
