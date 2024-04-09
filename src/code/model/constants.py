@@ -8,7 +8,7 @@ types_dict = {
     "fighting": ["lucha", "#eeb2af"], "poison": ["veneno", "#ffdeff"], "ground": ["tierra", "#efe6dc"],
     "flying": ["volador", "#d4e0f2"], "psychic": ["psíquico", "#ffc6d5"], "bug": ["bicho", "#d1d8c4"],
     "rock": ["roca", "#f1ebd2"], "ghost": ["fantasma", "#c7b1d5"], "dragon": ["dragón", "#d8c9fc"],
-    "dark": ["siniestro", "#646464"], "steel": ["acero", "#ececec"], "fairy": ["hada", "#ffecf2"]
+    "dark": ["siniestro", "#838383"], "steel": ["acero", "#ececec"], "fairy": ["hada", "#ffecf2"]
 }
 
 stats_dict = {

@@ -1,5 +1,5 @@
 # POKÉDEX APP
-Aplicación web hecha como hobby que consiste en una Pokédex que permite visualizar de diferentes maneras la información acerca de todos los Pokémon que existen hasta día de hoy. Cabe destacar que la aplicación no está completa y a lo largo del tiempo ser irá actualizando con nuevas funcionalidades o mejoras.
+Aplicación web hecha como hobby que consiste en una Pokédex que permite visualizar de diferentes maneras la información acerca de todos los Pokémon que existen hasta el día de hoy. Cabe destacar que la aplicación no está completa y a lo largo del tiempo ser irá actualizando con nuevas funcionalidades o mejoras.
 
 ## Descripción 
 La aplicación está compuesta por una vista en la que se muestra el listado completo de los Pokémon (formato de cartas). En cada carta, se visualizan la imagen del Pokémon y algunos datos básicos: id, nombre y tipos. 
@@ -20,12 +20,18 @@ Además del listado, forma parte de la aplicación la vista de detalle, a la que
     - Archivos JSON.
     - Imágenes en formato PNG y GIF.
 
-## Aviso sobre derechos de autor / Copyright notice
-- All media contents within "static/pokemon/" folder are copyrighted by The Pokémon Company and its affiliates. This includes images, gifs, sounds... / Todos los archivos multimedia dentro de la carpeta "static/pokemon/" son propiedad de The Pokémon Company y sus afiliados. Esto incluye imágenes, gifs, sonidos...: [link](https://www.pokemon.com/)
+## Copyright
+- All media contents and data within this repository are copyrighted by The Pokémon Company, Nintendo, Creatures Inc., Game Freak and its affiliates. / Todos los archivos multimedia y datos dentro de este repositorio son propiedad de The Pokémon Company, Nintendo, Creatures Inc., Game Freak y sus afiliados: 
+    - [The Pokémon Company](https://www.pokemon.com/)
+    - [Nintendo](https://www.nintendo.com/)
+    - [Creatures Inc.](https://www.creatures.co.jp/)
+    - [Game Freak](https://www.gamefreak.co.jp/)
 
-- All media contents within "static/pokemon/" folder were downloaded through the URLs defined in Pokeapi service for each pokemon, evolution chain... / Todos los archivos multimedia de los pokemon guardados dentro de "static/pokemon/" se han descargado a través de los enlaces que se pueden consultar en la Pokeapi para cada pokemon, cadena evolutiva...: [link](https://pokeapi.co/).
+- All media contents and data within "static/pokemon/" folder were downloaded through the URLs defined in Pokéapi service for each pokemon, evolution chain... / Todos los archivos multimedia y datos de los pokemon guardados dentro de "static/pokemon/" se han descargado a través de los enlaces que se pueden consultar en la Pokéapi para cada pokemon, cadena evolutiva...:
+    - [Pokéapi](https://pokeapi.co/).
 
-- "src/static/favicon.png" --> Image by '[Harisankar Sahoo](https://pixabay.com/users/hsaart-8633812/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=4657023)' from [Pixabay](https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=4657023) / Imagen hecha por '[Harisankar Sahoo](https://pixabay.com/users/hsaart-8633812/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=4657023)' y descargada de [Pixabay](https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=4657023): [link](https://pixabay.com/vectors/pokemon-icon-design-symbol-sign-4657023/).
+- "src/static/favicon.png" --> Image by '[Harisankar Sahoo](https://pixabay.com/users/hsaart-8633812/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=4657023)' from [Pixabay](https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=4657023) / Imagen hecha por '[Harisankar Sahoo](https://pixabay.com/users/hsaart-8633812/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=4657023)' y descargada de [Pixabay](https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=4657023): 
+    - [Image](https://pixabay.com/vectors/pokemon-icon-design-symbol-sign-4657023/).
 
 ## Capturas
 
@@ -38,3 +44,7 @@ Además del listado, forma parte de la aplicación la vista de detalle, a la que
 ---
 
 ![(Imagen no encontrada - Página detalle 2)](repo_images/detalle_pokemon_2.png)
+
+---
+
+![(Imagen no encontrada - Footer)](repo_images/footer.png)
