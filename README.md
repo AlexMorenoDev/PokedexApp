@@ -16,7 +16,7 @@ Además del listado, forma parte de la aplicación la vista de detalle, a la que
 - Backend:
     - [Python](https://www.python.org/).
     - [Flask](https://flask.palletsprojects.com/en/3.0.x/).
-- Datos (guardados localmente y obtenido a través de la [Pokéapi](https://pokeapi.co/)):
+- Datos (guardados localmente y obtenidos a través de la [Pokéapi](https://pokeapi.co/)):
     - Archivos JSON.
     - Imágenes en formato PNG y GIF.
 
@@ -31,3 +31,8 @@ Además del listado, forma parte de la aplicación la vista de detalle, a la que
 ---
 
 ![(Imagen no encontrada - Página detalle 2)](repo_images/detalle_pokemon_2.png)
+
+## Referencias
+- "src/static/favicon.png" --> Image by 'Harisankar Sahoo' from Pixabay / Imagen hecha por 'Harisankar Sahoo' y descargada de Pixabay: [link](https://pixabay.com/vectors/pokemon-icon-design-symbol-sign-4657023/).
+
+- All pokemon images, sprites, cries and data inside "static/pokemon/" folder were downloaded through the URLs defined in Pokeapi service for each pokemon / Todas las imágenes, sprites, gritos y datos de los pokemon se descargaron a través de los enlaces que se pueden consultar en la Pokeapi para cada pokemon: [link](https://pokeapi.co/).
