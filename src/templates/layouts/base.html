@@ -8,13 +8,13 @@
         <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap-5.0.2/css/bootstrap.min.css') }}">
         <link rel="stylesheet" href="{{ url_for('static', filename='font-awesome-4.7.0/css/font-awesome.min.css') }}">
         {% block not_common_links %}{% endblock %}
-        <link rel="icon" href="{{ url_for('static', filename='favicon.png') }}" type="image/png">
+        <link rel="icon" href="{{ url_for('static', filename='pokeball.png') }}" type="image/png">
     </head>
     <body>
         <main>
             {% block content %}{% endblock %}
         </main>
-        <footer class="page-footer font-small bg-dark pt-4 mt-4">
+        <footer id="page-footer" class="page-footer font-small bg-dark pt-4 mt-4">
             <div class="container">
                 <ul class="list-unstyled list-inline text-center">
                     <li class="list-inline-item no-text-decoration text-light btn-floating btn-fb mx-1">
