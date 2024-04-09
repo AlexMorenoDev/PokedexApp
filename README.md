@@ -8,14 +8,14 @@ Además del listado, forma parte de la aplicación la vista de detalle, a la que
 
 ## Tecnologías utilizadas
 - Frontend:
-    - HTML.
-    - JavaScript.
-    - CSS.
-    - [Bootstrap 5](https://getbootstrap.com/).
-    - [Font Awesome 4](https://fontawesome.com/v4/).
+    - HTML
+    - JavaScript
+    - CSS
+    - [Bootstrap 5](https://getbootstrap.com/)
+    - [Font Awesome 4](https://fontawesome.com/v4/)
 - Backend:
-    - [Python](https://www.python.org/).
-    - [Flask](https://flask.palletsprojects.com/en/3.0.x/).
+    - [Python](https://www.python.org/)
+    - [Flask](https://flask.palletsprojects.com/en/3.0.x/)
 - Datos (guardados localmente y obtenidos a través de la [Pokéapi](https://pokeapi.co/)):
     - Archivos JSON.
     - Imágenes en formato PNG y GIF.
@@ -28,10 +28,10 @@ Además del listado, forma parte de la aplicación la vista de detalle, a la que
     - [Game Freak](https://www.gamefreak.co.jp/)
 
 - All media contents and data within "static/pokemon/" folder were downloaded through the URLs defined in Pokéapi service for each pokemon, evolution chain... / Todos los archivos multimedia y datos de los pokemon guardados dentro de "static/pokemon/" se han descargado a través de los enlaces que se pueden consultar en la Pokéapi para cada pokemon, cadena evolutiva...:
-    - [Pokéapi](https://pokeapi.co/).
+    - [Pokéapi](https://pokeapi.co/)
 
 - "src/static/favicon.png" --> Image by '[Harisankar Sahoo](https://pixabay.com/users/hsaart-8633812/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=4657023)' from [Pixabay](https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=4657023) / Imagen hecha por '[Harisankar Sahoo](https://pixabay.com/users/hsaart-8633812/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=4657023)' y descargada de [Pixabay](https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=4657023): 
-    - [Image](https://pixabay.com/vectors/pokemon-icon-design-symbol-sign-4657023/).
+    - [Image](https://pixabay.com/vectors/pokemon-icon-design-symbol-sign-4657023/)
 
 ## Capturas
 
