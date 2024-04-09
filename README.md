@@ -20,6 +20,11 @@ Además del listado, forma parte de la aplicación la vista de detalle, a la que
     - Archivos JSON.
     - Imágenes en formato PNG y GIF.
 
+## Referencias
+- "src/static/favicon.png" --> Image by 'Harisankar Sahoo' from Pixabay / Imagen hecha por 'Harisankar Sahoo' y descargada de Pixabay: [link](https://pixabay.com/vectors/pokemon-icon-design-symbol-sign-4657023/).
+
+- All pokemon images, sprites, cries and data inside "static/pokemon/" folder were downloaded through the URLs defined in Pokeapi service for each pokemon / Todas las imágenes, sprites, gritos y datos de los pokemon se descargaron a través de los enlaces que se pueden consultar en la Pokeapi para cada pokemon: [link](https://pokeapi.co/).
+
 ## Capturas
 
 ![(Imagen no encontrada - Página listado)](repo_images/listado_pokemon.png)
@@ -31,8 +36,3 @@ Además del listado, forma parte de la aplicación la vista de detalle, a la que
 ---
 
 ![(Imagen no encontrada - Página detalle 2)](repo_images/detalle_pokemon_2.png)
-
-## Referencias
-- "src/static/favicon.png" --> Image by 'Harisankar Sahoo' from Pixabay / Imagen hecha por 'Harisankar Sahoo' y descargada de Pixabay: [link](https://pixabay.com/vectors/pokemon-icon-design-symbol-sign-4657023/).
-
-- All pokemon images, sprites, cries and data inside "static/pokemon/" folder were downloaded through the URLs defined in Pokeapi service for each pokemon / Todas las imágenes, sprites, gritos y datos de los pokemon se descargaron a través de los enlaces que se pueden consultar en la Pokeapi para cada pokemon: [link](https://pokeapi.co/).
