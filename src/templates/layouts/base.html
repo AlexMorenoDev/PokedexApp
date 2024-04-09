@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         {% block title %}{% endblock %}
-        <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap-5.0.2-dist/css/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap-5.0.2/css/bootstrap.min.css') }}">
         <link rel="stylesheet" href="{{ url_for('static', filename='font-awesome-4.7.0/css/font-awesome.min.css') }}">
         {% block not_common_links %}{% endblock %}
         <link rel="icon" href="{{ url_for('static', filename='favicon.png') }}" type="image/png">
@@ -14,10 +14,6 @@
         <main>
             {% block content %}{% endblock %}
         </main>
-        <script src="{{ url_for('static', filename='js/jquery-3.7.1.slim.min.js') }}"></script>
-        <script src="{{ url_for('static', filename='bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js') }}"></script>
-        {% block not_common_scripts %}{% endblock %}
-        
         <footer class="page-footer font-small bg-dark pt-4 mt-4">
             <div class="container">
                 <ul class="list-unstyled list-inline text-center">
@@ -30,16 +26,15 @@
                         <span class="text-light">|</span>
                     </li>
                     <li class="list-inline-item">
-                        <a class="no-text-decoration text-light btn-floating btn-fb mx-1 yellow-text" href="https://pokeapi.co/" target="_blank">
-                            Pokéapi
-                        </a>
-                    </li>
-                    <li class="list-inline-item">
-                        <span class="text-light">|</span>
-                    </li>
-                    <li class="list-inline-item">
                         <a class="no-text-decoration text-light btn-floating btn-fb mx-1 yellow-text" href="https://pixabay.com/vectors/pokemon-icon-design-symbol-sign-4657023/" target="_blank">
                             Favicon e imagen del título
+                        </a>
+                    </li>
+                </ul>
+                <ul class="list-unstyled list-inline text-center">
+                    <li class="list-inline-item">
+                        <a class="no-text-decoration text-light btn-floating btn-fb mx-1 yellow-text" href="https://pokeapi.co/" target="_blank">
+                            Pokéapi
                         </a>
                     </li>
                     <li class="list-inline-item">
@@ -50,9 +45,33 @@
                             Pixabay
                         </a>
                     </li>
+                    <li class="list-inline-item">
+                        <span class="text-light">|</span>
+                    </li>
+                    <li class="list-inline-item">
+                        <a class="no-text-decoration text-light btn-floating btn-fb mx-1 yellow-text" href="https://getbootstrap.com/" target="_blank">
+                            Boostrap
+                        </a>
+                    </li>
+                    <li class="list-inline-item">
+                        <span class="text-light">|</span>
+                    </li>
+                    <li class="list-inline-item">
+                        <a class="no-text-decoration text-light btn-floating btn-fb mx-1 yellow-text" href="https://fontawesome.com/v4/" target="_blank">
+                            Font Awesome 4
+                        </a>
+                    </li>
                 </ul>
             </div>
-            <div class="footer-copyright text-center text-light py-3 pt-3"><i class="fa fa-desktop" aria-hidden="true"></i> 2024 Hobby project, Alex</div>
+            <div class="footer-copyright text-center text-light py-3 pt-3">
+                <i class="fa fa-television fa-lg" aria-hidden="true"></i> 2024 Hobby project -
+                <i class="fa fa-github fa-lg" aria-hidden="true"></i>
+                <a class="no-text-decoration text-light yellow-text" href="https://github.com/AlexMorenoDev" target="_blank">AlexMorenoDev</a>
+            </div>
         </footer>
+
+        <script src="{{ url_for('static', filename='js/jquery-3.7.1.slim.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='bootstrap-5.0.2/js/bootstrap.bundle.min.js') }}"></script>
+        {% block not_common_scripts %}{% endblock %}
     </body>
 </html>
