@@ -1,0 +1,20 @@
+All media contents and data within this repository are copyrighted by The Pokémon Company, Nintendo, Creatures Inc., Game Freak and its affiliates. /
+Todos los archivos multimedia y datos dentro de este repositorio son propiedad de The Pokémon Company, Nintendo, Creatures Inc., Game Freak y sus afiliados:
+    - https://www.pokemon.com/
+    - https://www.nintendo.com/
+    - https://www.creatures.co.jp/
+    - https://www.gamefreak.co.jp/
+
+
+All media contents and data within "static/pokemon/" folder were downloaded through the URLs defined in Pokéapi service for each pokemon, evolution chain... /
+Todos los archivos multimedia y datos de los pokemon guardados dentro de "static/pokemon/" se han descargado a través de los enlaces que se pueden consultar en 
+la Pokéapi para cada pokemon, cadena evolutiva...:
+	- https://pokeapi.co/
+
+
+"src/static/favicon.png"
+Image by 'Harisankar Sahoo' from Pixabay /
+Imagen hecha por 'Harisankar Sahoo' y descargada de Pixabay:
+    - https://pixabay.com/vectors/pokemon-icon-design-symbol-sign-4657023/
+    - https://pixabay.com/users/hsaart-8633812/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=4657023
+    - https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=4657023
