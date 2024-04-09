@@ -21,6 +21,11 @@ Además del listado, forma parte de la aplicación la vista de detalle, a la que
     - Imágenes en formato PNG y GIF.
 
 ## Capturas
+Listado:
 ![(Imagen no encontrada - Página del listado de Pokémon)](repo_images/listado_pokemon.png)
+
+Detalle:
 ![(Imagen no encontrada - Página de detalle de Pokémon 1)](repo_images/detalle_pokemon_1.png)
+
+Detalle - Cadena evolutiva:
 ![(Imagen no encontrada - Página de detalle de Pokémon 2)](repo_images/detalle_pokemon_2.png)
