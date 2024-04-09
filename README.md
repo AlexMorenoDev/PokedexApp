@@ -20,10 +20,10 @@ Además del listado, forma parte de la aplicación la vista de detalle, a la que
     - Archivos JSON.
     - Imágenes en formato PNG y GIF.
 
-## Copyright notice / Aviso sobre derechos de autor
+## Aviso sobre derechos de autor / Copyright notice
 - All media contents within "static/pokemon/" folder are copyrighted by The Pokémon Company and its affiliates. This includes images, gifs, sounds... / Todos los archivos multimedia dentro de la carpeta "static/pokemon/" son propiedad de The Pokémon Company y sus afiliados. Esto incluye imágenes, gifs, sonidos...: [link](https://www.pokemon.com/)
 
-- All pokemon images, sprites, cries and data inside "static/pokemon/" folder were downloaded through the URLs defined in Pokeapi service for each pokemon, evolution chain... / Todas las imágenes, sprites, gritos y datos de los pokemon se descargaron a través de los enlaces que se pueden consultar en la Pokeapi para cada pokemon, cadenas evolutivas...: [link](https://pokeapi.co/).
+- All media contents within "static/pokemon/" folder were downloaded through the URLs defined in Pokeapi service for each pokemon, evolution chain... / Todos los archivos multimedia de los pokemon guardados dentro de "static/pokemon/" se han descargado a través de los enlaces que se pueden consultar en la Pokeapi para cada pokemon, cadena evolutiva...: [link](https://pokeapi.co/).
 
 - "src/static/favicon.png" --> Image by '[Harisankar Sahoo](https://pixabay.com/users/hsaart-8633812/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=4657023)' from [Pixabay](https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=4657023) / Imagen hecha por '[Harisankar Sahoo](https://pixabay.com/users/hsaart-8633812/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=4657023)' y descargada de [Pixabay](https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=4657023): [link](https://pixabay.com/vectors/pokemon-icon-design-symbol-sign-4657023/).
 

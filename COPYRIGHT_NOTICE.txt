@@ -3,8 +3,8 @@ Todos los archivos multimedia dentro de la carpeta "static/pokemon/" son propied
 	- https://www.pokemon.com/
 
 
-All pokemon images, sprites, cries and data inside "static/pokemon/" folder were downloaded through the URLs defined in Pokeapi service for each pokemon, evolution chain... /
-Todas las imágenes, sprites, gritos y datos de los pokemon se descargaron a través de los enlaces que se pueden consultar en la Pokeapi para cada pokemon, cadenas evolutivas...
+All media contents within "static/pokemon/" folder were downloaded through the URLs defined in Pokeapi service for each pokemon, evolution chain... /
+Todos los archivos multimedia de los pokemon guardados dentro de "static/pokemon/" se han descargado a través de los enlaces que se pueden consultar en la Pokeapi para cada pokemon, cadena evolutiva...
 	- https://pokeapi.co/
 
 
