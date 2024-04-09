@@ -2,7 +2,8 @@ import os
 import gdown
 import patoolib
 
-
+# Model can be initialized executing "init_model.py" script or executing this script to download a rar file with the model already initialized
+# When deploying the application, as the "init_model.py" takes so much time to finish, second option will be done
 def main():
     url = "https://drive.google.com/uc?id=1g3KOhSVoc6YUkVGwIqDuTpksYI43OMJG"
     download_output = "../../static/pokemon.rar"
