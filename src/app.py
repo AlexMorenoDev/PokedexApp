@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, url_for, abort
+from flask import Flask, render_template, abort
 import model.model as db
 
 app = Flask(__name__, template_folder="../templates", static_folder="../static")
@@ -26,9 +26,10 @@ def pokemon_info_detail(pokemon_id):
 
 @app.errorhandler(404)
 def page_not_found(e):
-    return render_template('404.html'), 404
+    return render_template("404.html"), 404
+
+app.register_error_handler(404, page_not_found)
 
 
-if __name__ == '__main__':
-    app.register_error_handler(404, page_not_found)
-    app.run(debug=True)
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", debug=True)
