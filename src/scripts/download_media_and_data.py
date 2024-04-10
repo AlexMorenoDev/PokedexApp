@@ -6,7 +6,7 @@ import patoolib
 # When deploying the application, as the "init_model.py" takes so much time to finish, second option will be done
 def main():
     url = "https://drive.google.com/uc?id=" + os.environ["gdrive_file_id"]
-    download_output = "../static/pokemon.rar" # For deployment
+    download_output = "../static/pokemon.zip" # For deployment
     #download_output = "../../static/pokemon.rar" # For localhost
     gdown.download(url, download_output, quiet=False)
 
