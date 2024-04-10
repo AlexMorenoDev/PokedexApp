@@ -2,4 +2,4 @@ venv/
 __pycache__/
 XnViewMP/
 
-src/static/pokemon/
+static/pokemon/
