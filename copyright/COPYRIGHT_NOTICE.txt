@@ -16,7 +16,7 @@ la Pokéapi para cada pokemon, cadena evolutiva...:
 	- https://pokeapi.co/
 
 
-"src/static/pokeball.png"
+"static/pokeball.png"
 Image by 'Harisankar Sahoo' from Pixabay /
 Imagen hecha por 'Harisankar Sahoo' y descargada de Pixabay:
     - https://pixabay.com/vectors/pokemon-icon-design-symbol-sign-4657023/

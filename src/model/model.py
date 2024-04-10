@@ -1,7 +1,7 @@
 import os
 import json
 import model.utils as utils
-import model.constants as consts
+import model.config as cfg
 
 
 def get_all_pokemon_count(target_dir):
@@ -47,7 +47,7 @@ def get_pokemon_detail(filepath):
     
 
 def get_pokemon_evolution_chain(evolution_chain_id):
-    filepath = consts.pokemon_evolution_chains_path + str(evolution_chain_id) + ".json"
+    filepath = cfg.pokemon_evolution_chains_path + str(evolution_chain_id) + ".json"
     if not os.path.isfile(filepath):
         return None
     

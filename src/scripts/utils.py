@@ -38,3 +38,11 @@ def remove_dir_files(path):
             os.remove(filepath)
             print("INFO: El archivo '" + filepath + "' se ha eliminado correctamente!")
 
+
+def make_pokeapi_call(url, call_name_if_error):
+    response = requests.get(url)
+    if response.status_code == 200:
+        return response.json()
+    print(f"ERROR: Hay un problema al conectarse con la Poke API [{call_name_if_error}].\n{response.raise_for_status()}")
+    return None
+
