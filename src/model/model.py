@@ -23,7 +23,7 @@ def get_all_pokemon(target_dir):
                 pokemon_info_temp = json.load(json_file)
             pokemon_info["id"] = str(pokemon_info_temp.get("id"))
             pokemon_info["name"] = utils.format_pokemon_name(pokemon_info_temp.get("name"))
-            pokemon_info["types"] = utils.format_pokemon_types(pokemon_info_temp.get("types"))
+            pokemon_info["types"] = utils.format_pokemon_types(pokemon_info_temp.get("types"), calculate_weaknesses=False)
             pokemon_list.append(pokemon_info)
     
     return pokemon_list
@@ -37,7 +37,7 @@ def get_pokemon_detail(filepath):
         pokemon_info = json.load(json_file)
     pokemon_info["id"] = str(pokemon_info.get("id"))
     pokemon_info["name"] = utils.format_pokemon_name(pokemon_info.get("name"))
-    pokemon_info["types"] = utils.format_pokemon_types(pokemon_info.get("types"))
+    pokemon_info["types"], pokemon_info["weaknesses"] = utils.format_pokemon_types(pokemon_info.get("types"), calculate_weaknesses=True)
     pokemon_info["attributes"]["height"] = [str(float(pokemon_info.get("attributes").get("height")) / 10), "m", "Altura"]
     pokemon_info["attributes"]["weight"] = [str(float(pokemon_info.get("attributes").get("weight")) / 10), "kg", "Peso"]
     pokemon_info["stats"] = utils.format_pokemon_stats(pokemon_info.get("stats"))
@@ -55,16 +55,16 @@ def get_pokemon_evolution_chain(evolution_chain_id):
         pokemon_evolution_chain = json.load(json_file)
     pokemon_evolution_chain["id"] = str(pokemon_evolution_chain.get("id"))
     pokemon_evolution_chain["name"] = utils.format_pokemon_name(pokemon_evolution_chain.get("name"))
-    pokemon_evolution_chain["types"] = utils.format_pokemon_types(pokemon_evolution_chain.get("types"))
+    pokemon_evolution_chain["types"] = utils.format_pokemon_types(pokemon_evolution_chain.get("types"), calculate_weaknesses=False, types_simple_format=True)
 
     for evolution_1 in pokemon_evolution_chain["evolves_to"]:
         evolution_1["id"] = str(evolution_1.get("id"))
         evolution_1["name"] = utils.format_pokemon_name(evolution_1.get("name"))
-        evolution_1["types"] = utils.format_pokemon_types(evolution_1.get("types"))
+        evolution_1["types"] = utils.format_pokemon_types(evolution_1.get("types"), calculate_weaknesses=False, types_simple_format=True)
         for evolution_2 in evolution_1["evolves_to"]:
             evolution_2["id"] = str(evolution_2.get("id"))
             evolution_2["name"] = utils.format_pokemon_name(evolution_2.get("name"))
-            evolution_2["types"] = utils.format_pokemon_types(evolution_2.get("types"))
+            evolution_2["types"] = utils.format_pokemon_types(evolution_2.get("types"), calculate_weaknesses=False, types_simple_format=True)
 
     return pokemon_evolution_chain
 

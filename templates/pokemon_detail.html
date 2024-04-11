@@ -24,7 +24,7 @@
                             </div>
                             <div class="col-auto">
                                 <button type="button" id="toggle-pokemon-image-button" class="btn btn-dark btn-sm"><i class="fa fa-star"></i></button>
-                                <a href="/"><button type="button" class="btn btn-dark btn-sm"><i class="fa fa-home"></i></i></button></a>
+                                <a href="{{ url_for('pokedex_home') }}"><button type="button" class="btn btn-dark btn-sm"><i class="fa fa-home"></i></i></button></a>
                             </div>
                         </div>
                         <hr>
@@ -139,6 +139,32 @@
                                 </tr>
                             </tbody>
                         </table>
+                    </div>
+                </div>
+                <br>
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col">
+                                <span class="card-title"><h4><strong>Debilidades</strong></h4></span>
+                            </div>
+                            <div class="col-auto">
+                                <a href="{{ url_for('types_chart') }}" target="_blank"><button type="button" class="btn btn-dark btn-sm"><i class="fa fa-table"></i></button></a>
+                            </div>
+                        </div>
+                        <hr>
+                        <ul class="list-unstyled list-inline">
+                            {% for weakness in pokemon_info.weaknesses %}
+                                <li class="list-inline-item">
+                                    <p class="type type-{{ weakness[0] }} mt-1" data-bs-toggle="tooltip" data-bs-placement="top" title="Daño {{ weakness[2] }}">
+                                        {{ weakness[1] }} 
+                                        {% if weakness[2] == "x 4" %}
+                                            <i class="fa fa-exclamation-circle"></i>
+                                        {% endif %}
+                                    </p>
+                                </li>
+                            {% endfor %}
+                        </ul>
                     </div>
                 </div>
             </div>

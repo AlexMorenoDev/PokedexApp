@@ -24,6 +24,11 @@ def pokemon_info_detail(pokemon_id):
     return render_template("pokemon_detail.html", pokemon_info=pokemon_info)
 
 
+@app.route("/tabla-tipos")
+def types_chart():
+    return render_template("types_chart.html")
+
+
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template("404.html"), 404

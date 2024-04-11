@@ -47,7 +47,7 @@ def get_pokemon_info(pokemon_id):
                 "height": pokemon_data["height"],
                 "weight": pokemon_data["weight"]
             },
-            "types": [type_data["type"]["name"] for type_data in pokemon_data["types"]],
+            "types": [],
             "stats": format_stats_data(pokemon_data["stats"]),
             "abilities": format_abilities_data(pokemon_data["abilities"])
         }
@@ -61,7 +61,23 @@ def get_pokemon_info(pokemon_id):
             pokemon_info["desc"] = utils.get_translated_field(pokemon_species_data["flavor_text_entries"], "flavor_text", "es")
         else:
             pokemon_info["desc"] = None
-    
+
+        # Get pokemon types and weaknesses
+        for current_type in pokemon_data["types"]:
+            type_data = utils.make_pokeapi_call(
+                current_type["type"]["url"], 
+                "pokemon type - get_pokemon_info()"
+            )
+            type_info = [
+                current_type["type"]["name"], {
+                    "double_damage_from": [element["name"] for element in type_data["damage_relations"]["double_damage_from"]],
+                    "half_damage_from": [element["name"] for element in type_data["damage_relations"]["half_damage_from"]],
+                    "no_damage_from": [element["name"] for element in type_data["damage_relations"]["no_damage_from"]]
+                }
+            ]
+
+            pokemon_info["types"].append(type_info)
+
     return pokemon_info
     
 
@@ -196,8 +212,8 @@ def main():
         download_pokemon_media(pokemon_id)
 
         pokemon_evolution_chain, evolution_chain_id = get_evolution_chain(pokemon_id, pokemon_info_json)
+        evolution_chain_json = cfg.pokemon_evolution_chains_path + str(evolution_chain_id) + ".json"
         if pokemon_evolution_chain:
-            evolution_chain_json = cfg.pokemon_evolution_chains_path + str(evolution_chain_id) + ".json"
             with open (evolution_chain_json, "w") as output_file: 
                 json.dump(pokemon_evolution_chain, output_file)
             print(f"INFO: Se ha guardado el archivo '{evolution_chain_json}' correctamente!")
