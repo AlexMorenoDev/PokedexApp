@@ -8,31 +8,62 @@
 
 {% block content %}
     <div class="container-fluid">
-        <table class="table table-bordered table-responsive">
-            <tbody>
-                <tr>
-                    <th></th>
-                    {% for type_name in pokemon_types_chart %}
-                        <th class="align-middle text-center"><p class="type type-{{ type_name }} type-sm">{{ translated_types[loop.index0] }}</p></th>
-                    {% endfor %}
-                </tr>
-
-                {% for type_name, multiplier_list in pokemon_types_chart.items() %}
-                    <tr>
-                        <th class="align-middle text-center"><p class="type type-{{ type_name }} type-sm">{{ translated_types[loop.index0] }}</p></th>
-                        {% for value in multiplier_list %}
-                                {% if value == 0.5 %}
-                                    <td class="align-middle text-center"><p class="multiplier multiplier-0-5" style="font-size: 12px; padding: 3px 4px;">1/2</p></td>
-                                {% elif value == 1 %}
-                                    <td class="align-middle text-center">-</td>
-                                {% else %}
-                                    <td class="align-middle text-center"><p class="multiplier multiplier-{{ value }}">x{{ value }}</p></td>
-                                {% endif %}
-                        {% endfor %}
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+        <div class="card mt-3 border-dark border-1">
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered mb-0">
+                        <tbody> 
+                            <tr>
+                                <th class="align-middle text-center">
+                                    <a class="text-dark  yellow-text" data-bs-toggle="modal" data-bs-target="#types-chart-modal">
+                                        <i class="fa fa-info-circle" style="font-size: 30px;"></i>
+                                    </a>
+                                </th>
+                                {% for type_name in pokemon_types_chart %}
+                                    <th class="align-middle text-center"><p class="type type-{{ type_name }} type-sm">{{ translated_types[loop.index0] }}</p></th>
+                                {% endfor %}
+                            </tr>
+                            {% for type_name, multiplier_list in pokemon_types_chart.items() %}
+                                <tr>
+                                    <th class="align-middle text-center"><p class="type type-{{ type_name }} type-sm">{{ translated_types[loop.index0] }}</p></th>
+                                    {% for value in multiplier_list %}
+                                            {% if value == 0.5 %}
+                                                <td class="align-middle text-center"><p class="multiplier multiplier-0-5" style="font-size: 12px; padding: 3px 4px;">1/2</p></td>
+                                            {% elif value == 1 %}
+                                                <td class="align-middle text-center">-</td>
+                                            {% else %}
+                                                <td class="align-middle text-center"><p class="multiplier multiplier-{{ value }}">x{{ value }}</p></td>
+                                            {% endif %}
+                                    {% endfor %}
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div> 
+        <div id="types-chart-modal" class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Tabla de tipos</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>
+                            <img src="{{ url_for('static', filename='types_chart_information.png') }}" class="img-fluid border border-1" alt="Imagen no encontrada">
+                        </p>
+                        <p style="font-size: 15px;">
+                            La tabla muestra las fortalezas y debilidades de cada tipo. Busca el tipo del ataque en la parte izquierda (primera columna), y luego, 
+                            vete moviéndote hacia la derecha para ver su eficacia contra cada tipo de Pokémon.
+                        </p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 {% endblock %}
 
