@@ -49,6 +49,10 @@ def format_pokemon_types(pokemon_types, calculate_weaknesses, types_simple_forma
     return formatted_types
 
 
+def get_type_translation(type_name):
+    return cfg.types_dict[type_name][0]
+
+
 def format_pokemon_weaknesses(pokemon_types):
     formatted_types = []
     for element in pokemon_types:

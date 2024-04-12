@@ -7,8 +7,32 @@
 {% endblock %}
 
 {% block content %}
-    <div class="container">
-        <h1>TODO</h1>
+    <div class="container-fluid">
+        <table class="table table-bordered table-responsive">
+            <tbody>
+                <tr>
+                    <th></th>
+                    {% for type_name in pokemon_types_chart %}
+                        <th class="align-middle text-center"><p class="type type-{{ type_name }} type-sm">{{ translated_types[loop.index0] }}</p></th>
+                    {% endfor %}
+                </tr>
+
+                {% for type_name, multiplier_list in pokemon_types_chart.items() %}
+                    <tr>
+                        <th class="align-middle text-center"><p class="type type-{{ type_name }} type-sm">{{ translated_types[loop.index0] }}</p></th>
+                        {% for value in multiplier_list %}
+                                {% if value == 0.5 %}
+                                    <td class="align-middle text-center"><p class="multiplier multiplier-0-5" style="font-size: 12px; padding: 3px 4px;">1/2</p></td>
+                                {% elif value == 1 %}
+                                    <td class="align-middle text-center">-</td>
+                                {% else %}
+                                    <td class="align-middle text-center"><p class="multiplier multiplier-{{ value }}">x{{ value }}</p></td>
+                                {% endif %}
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     </div>
 {% endblock %}
 

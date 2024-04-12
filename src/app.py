@@ -26,7 +26,8 @@ def pokemon_info_detail(pokemon_id):
 
 @app.route("/tabla-tipos")
 def types_chart():
-    return render_template("types_chart.html")
+    pokemon_types_chart, translated_types = db.get_pokemon_types_chart()
+    return render_template("types_chart.html", pokemon_types_chart=pokemon_types_chart, translated_types=translated_types)
 
 
 @app.errorhandler(404)

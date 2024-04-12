@@ -4,7 +4,7 @@ p.type {
     border: 2px solid #000;
     border-radius: 20px;
     padding: 4px 16px;
-    margin-bottom: 5px;
+    margin-bottom: 1px;
     color: #000;
     font-weight: 600;
     text-align: center;
@@ -110,4 +110,39 @@ p.type-steel {
 p.type-fairy {
     background-color: #f2b0f4;
     border-color: #9b6470;
+}
+
+p.multiplier {
+    font-size: 13px;
+    font-family: sans-serif;
+    color: #fff;
+    border: 2px solid #000;
+    border-radius: 50%;
+    padding: 2px 5px;
+    margin: 0px;
+    font-weight: 600;
+    text-align: center;
+    vertical-align: center;
+    display: inline-block;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    -ms-user-select: none;
+    user-select: none
+}
+
+p.multiplier-2 {
+    background-color: #62b43a;
+    border-color: #313030;
+}
+
+p.multiplier-0-5 {
+    background-color: #e69611;
+    border-color: #313030;
+}
+
+p.multiplier-0 {
+    background-color: #000;
+    border-color: #313030;
 }

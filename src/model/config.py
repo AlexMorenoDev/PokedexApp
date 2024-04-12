@@ -1,5 +1,6 @@
 
 pokemon_evolution_chains_path = "../static/pokemon/evolution_chains/"
+pokemon_types_chart_filepath = "../static/types_chart.json"
 
 # this dict contains type translation and type background color in hexadecimal format
 types_dict = {

@@ -68,4 +68,14 @@ def get_pokemon_evolution_chain(evolution_chain_id):
 
     return pokemon_evolution_chain
 
+
+def get_pokemon_types_chart():
+    with open(cfg.pokemon_types_chart_filepath, 'r') as json_file:
+        types_chart = json.load(json_file)
+    
+    translated_types = []
+    for type_name in types_chart:
+        translated_types.append(utils.get_type_translation(type_name))
+
+    return types_chart, translated_types
     
