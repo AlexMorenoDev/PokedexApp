@@ -1,19 +1,29 @@
 from flask import Flask, render_template, abort
 import model.model as db
+from math import ceil
 
 app = Flask(__name__, template_folder="../templates", static_folder="../static")
 db_path = "../static/pokemon/info/"
 
 
-@app.route("/")
+@app.route("/", methods=['GET'])
 def pokedex_home():
     global db_path
 
-    pokemon_list = db.get_all_pokemon(db_path)
-    return render_template("pokemon_list.html", pokemon_list=pokemon_list)
+    num_pages = ceil(db.get_all_pokemon_count(db_path) / 12)
+    return render_template("pokemon_list.html", num_pages=num_pages)
 
 
-@app.route("/pokemon/<pokemon_id>")
+@app.route("/pokemon-list/<page_id>", methods=['GET'])
+def get_pokemon_list(page_id):
+    global db_path
+
+    ending_id = int(page_id) * 12
+    starting_id = ending_id - 11
+    return {"pokemon_list": db.get_pokemon_list(db_path, starting_id, ending_id)}
+
+
+@app.route("/pokemon/<pokemon_id>", methods=['GET'])
 def pokemon_info_detail(pokemon_id):
     global db_path
 
@@ -24,7 +34,7 @@ def pokemon_info_detail(pokemon_id):
     return render_template("pokemon_detail.html", pokemon_info=pokemon_info)
 
 
-@app.route("/tabla-tipos")
+@app.route("/tabla-tipos", methods=['GET'])
 def types_chart():
     pokemon_types_chart, translated_types = db.get_pokemon_types_chart()
     return render_template("types_chart.html", pokemon_types_chart=pokemon_types_chart, translated_types=translated_types)

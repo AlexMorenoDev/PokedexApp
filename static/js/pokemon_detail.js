@@ -1,13 +1,13 @@
 $(document).ready(function () {
     /* Format pokemon id */
     $(".card-subtitle").each(function () {
-        var item_text = $(this).text();
+        let item_text = $(this).text();
         item_text = item_text.padStart(3, '0');
         $(this).text("N.º " + item_text);
     });
 
     /* Set audio element volume */
-    var audio = document.getElementById("pokemon-cry");
+    let audio = document.getElementById("pokemon-cry");
     audio.volume = 0.25;
 
     /* Swap pokemon image */
@@ -73,7 +73,7 @@ $(document).ready(function () {
 
 function update_image_src(selector, url_split_index, val_1, val_2) {
     $(selector).each(function () {
-        var current_url = $(this).attr("src");
+        let current_url = $(this).attr("src");
         if (current_url.split("/")[url_split_index] === val_1) {
             $(this).attr("src", current_url.replace(val_1, val_2))
         } else {

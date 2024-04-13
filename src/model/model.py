@@ -13,18 +13,18 @@ def get_all_pokemon_count(target_dir):
     return count
 
 
-def get_all_pokemon(target_dir):
+def get_pokemon_list(target_dir, starting_id, ending_id):
     pokemon_list = []
-
-    for filename in utils.order_files_numerically(os.listdir(target_dir), target_dir):
+    for i in range(starting_id, ending_id+1):
+        filename = target_dir + str(i) + ".json"
         if os.path.isfile(filename):
-            pokemon_info = {}
+            formatted_info = {}
             with open(filename, 'r') as json_file:
-                pokemon_info_temp = json.load(json_file)
-            pokemon_info["id"] = str(pokemon_info_temp.get("id"))
-            pokemon_info["name"] = utils.format_pokemon_name(pokemon_info_temp.get("name"))
-            pokemon_info["types"] = utils.format_pokemon_types(pokemon_info_temp.get("types"), calculate_weaknesses=False)
-            pokemon_list.append(pokemon_info)
+                pokemon_info = json.load(json_file)
+            formatted_info["id"] = str(pokemon_info.get("id"))
+            formatted_info["name"] = utils.format_pokemon_name(pokemon_info.get("name"))
+            formatted_info["types"] = utils.format_pokemon_types(pokemon_info.get("types"), calculate_weaknesses=False)
+            pokemon_list.append(formatted_info)
     
     return pokemon_list
 

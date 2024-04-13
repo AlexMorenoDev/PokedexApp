@@ -104,11 +104,6 @@ html {
     margin-bottom: 5px;
 }
 
-/* .evolution-chain-type {
-    font-size: 10px !important;
-    padding: 2px 6px !important;
-} */
-
 .evolution-chain-img {
     width: 175px;
     border-radius: 25%;
@@ -124,4 +119,14 @@ html {
 .yellow-text:hover {
     color: #ffc107 !important;
 }
+
+.page-link {
+    width: 39px;
+    color: black;
+}
+
+.page-link:disabled {
+    background-color: #d3d3d3;
+}
+
 
