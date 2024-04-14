@@ -42,7 +42,7 @@ def get_pokemon_info(pokemon_id):
         # Get pokemon generic info
         pokemon_info = {
             "id": pokemon_id,
-            "name": pokemon_data["name"], 
+            "name": None, # Initialized later. I define it here to keep the order
             "attributes": {
                 "height": pokemon_data["height"],
                 "weight": pokemon_data["weight"]
@@ -58,9 +58,10 @@ def get_pokemon_info(pokemon_id):
             "pokemon species - get_pokemon_info()"
         )
         if pokemon_species_data:
+            pokemon_info["name"] = utils.get_translated_field(pokemon_species_data["names"], "name", "es")
             pokemon_info["desc"] = utils.get_translated_field(pokemon_species_data["flavor_text_entries"], "flavor_text", "es")
         else:
-            pokemon_info["desc"] = None
+            pokemon_info["name"], pokemon_info["desc"] = None, None
 
         # Get pokemon types and weaknesses
         for current_type in pokemon_data["types"]:
@@ -141,45 +142,52 @@ def get_evolution_chain(pokemon_id, pokemon_info_json):
             evolution_chain_id = evolution_chain_data["id"]
             if not os.path.isfile(cfg.pokemon_evolution_chains_path + str(evolution_chain_id) + ".json"):
                 start_pokemon = evolution_chain_data["chain"]
+                pokemon_species_url = start_pokemon["species"]["url"]
                 pokemon_data = utils.make_pokeapi_call(
-                    "https://pokeapi.co/api/v2/pokemon/" + start_pokemon["species"]["url"].split("/")[6], 
+                    "https://pokeapi.co/api/v2/pokemon/" + pokemon_species_url.split("/")[6], 
                     "pokemon info - get_evolution_chain() - 0"
                 )
-
                 if pokemon_data:
-                    evolution_chain["id"] = pokemon_data["id"]
-                    evolution_chain["name"] = pokemon_data["name"]
-                    evolution_chain["types"] = [type_data["type"]["name"] for type_data in pokemon_data["types"]]
-                    evolution_chain["evolves_to"] = []
-                    
-                    for evolution_1 in start_pokemon["evolves_to"]:
-                        evolution_1_dict = {}
-                        pokemon_data = utils.make_pokeapi_call(
-                            "https://pokeapi.co/api/v2/pokemon/" + evolution_1["species"]["url"].split("/")[6], 
-                            "pokemon info - get_evolution_chain() - 1"
-                        )
+                    pokemon_species_data = utils.make_pokeapi_call(pokemon_species_url, "pokemon species - get_evolution_chain() - 0")
+                    if pokemon_species_data:
+                        evolution_chain["id"] = pokemon_data["id"]
+                        evolution_chain["name"] = utils.get_translated_field(pokemon_species_data["names"], "name", "es")
+                        evolution_chain["types"] = [type_data["type"]["name"] for type_data in pokemon_data["types"]]
+                        evolution_chain["evolves_to"] = []
+                        
+                        for evolution_1 in start_pokemon["evolves_to"]:
+                            evolution_1_dict = {}
+                            pokemon_species_url = evolution_1["species"]["url"]
+                            pokemon_data = utils.make_pokeapi_call(
+                                "https://pokeapi.co/api/v2/pokemon/" + pokemon_species_url.split("/")[6], 
+                                "pokemon info - get_evolution_chain() - 1"
+                            )
+                            if pokemon_data:
+                                pokemon_species_data = utils.make_pokeapi_call(pokemon_species_url, "pokemon species - get_evolution_chain() - 1")
+                                if pokemon_species_data:
+                                    evolution_1_dict["id"] = pokemon_data["id"]
+                                    evolution_1_dict["name"] = utils.get_translated_field(pokemon_species_data["names"], "name", "es")
+                                    evolution_1_dict["types"] = [type_data["type"]["name"] for type_data in pokemon_data["types"]]
+                                    evolution_1_dict["evolves_to"] = []
+                                    for evolution_2 in evolution_1["evolves_to"]:
+                                        evolution_2_dict = {}
+                                        pokemon_species_url = evolution_2["species"]["url"]
+                                        pokemon_data = utils.make_pokeapi_call(
+                                            "https://pokeapi.co/api/v2/pokemon/" + pokemon_species_url.split("/")[6], 
+                                            "pokemon info - get_evolution_chain() - 2"
+                                        )
 
-                        if pokemon_data:
-                            evolution_1_dict["id"] = pokemon_data["id"]
-                            evolution_1_dict["name"] = pokemon_data["name"]
-                            evolution_1_dict["types"] = [type_data["type"]["name"] for type_data in pokemon_data["types"]]
-                            evolution_1_dict["evolves_to"] = []
-                            for evolution_2 in evolution_1["evolves_to"]:
-                                evolution_2_dict = {}
-                                pokemon_data = utils.make_pokeapi_call(
-                                    "https://pokeapi.co/api/v2/pokemon/" + evolution_2["species"]["url"].split("/")[6], 
-                                    "pokemon info - get_evolution_chain() - 2"
-                                )
+                                        if pokemon_data:
+                                            pokemon_species_data = utils.make_pokeapi_call(pokemon_species_url, "pokemon species - get_evolution_chain() - 2")
+                                            if pokemon_species_data:
+                                                evolution_2_dict["id"] = pokemon_data["id"]
+                                                evolution_2_dict["name"] = utils.get_translated_field(pokemon_species_data["names"], "name", "es")
+                                                evolution_2_dict["types"] = [type_data["type"]["name"] for type_data in pokemon_data["types"]]
+                                                evolution_2_dict["evolves_to"] = []
 
-                                if pokemon_data:
-                                    evolution_2_dict["id"] = pokemon_data["id"]
-                                    evolution_2_dict["name"] = pokemon_data["name"]
-                                    evolution_2_dict["types"] = [type_data["type"]["name"] for type_data in pokemon_data["types"]]
-                                    evolution_2_dict["evolves_to"] = []
-
-                                    evolution_1_dict["evolves_to"].append(evolution_2_dict)
-                            
-                            evolution_chain["evolves_to"].append(evolution_1_dict)
+                                                evolution_1_dict["evolves_to"].append(evolution_2_dict)
+                                    
+                                    evolution_chain["evolves_to"].append(evolution_1_dict)
 
             with open(pokemon_info_json, "r") as json_file:
                 pokemon_info = json.load(json_file)

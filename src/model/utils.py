@@ -10,16 +10,6 @@ def order_files_numerically(files_list, target_dir):
     return filenames
 
 
-def format_pokemon_name(pokemon_name):
-    pokemon_name = pokemon_name.capitalize()
-    if pokemon_name.endswith("-f"):
-        return pokemon_name.replace("-f", " ♀")
-    if pokemon_name.endswith('-m'):
-        return pokemon_name.replace("-m", " ♂")
-    
-    return pokemon_name
-
-
 def format_pokemon_types(pokemon_types, calculate_weaknesses, types_simple_format=False):
     formatted_types = []
     for type_info in pokemon_types:
