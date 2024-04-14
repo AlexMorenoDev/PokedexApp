@@ -28,6 +28,13 @@ def get_translated_field(target_list, target_field, lang):
     for entry in target_list:
         if entry["language"]["name"] == lang:
             return entry[target_field]
+    
+    # If lang not found, try to return english translation
+    for entry in target_list:
+        if entry["language"]["name"] == "en":
+            return entry[target_field]
+        
+    # return None if lang or english translation are not found
     return None
 
 
