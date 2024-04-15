@@ -25,14 +25,14 @@ def save_file_from_url(url, output_file):
 
 
 def get_translated_field(target_list, target_field, lang):
-    for entry in target_list:
-        if entry["language"]["name"] == lang:
-            return entry[target_field]
+    lang_results = list(filter(lambda entry: entry["language"]["name"] == lang, target_list))
+    if lang_results:
+        return lang_results[-1][target_field]
     
     # If lang not found, try to return english translation
-    for entry in target_list:
-        if entry["language"]["name"] == "en":
-            return entry[target_field]
+    en_results = list(filter(lambda entry: entry["language"]["name"] == "en", target_list))
+    if en_results:
+        return en_results[-1][target_field]
         
     # return None if lang or english translation are not found
     return None

@@ -89,11 +89,6 @@ html {
     text-align: left;
 }
 
-/* Added to the tooltip in 'pokemon_detail.js' */
-.custom-white-space-tooltip.tooltip > .tooltip-inner {
-    white-space: break-spaces;
-}
-
 .evolution-chain-id {
     font-size: 13px;
     
