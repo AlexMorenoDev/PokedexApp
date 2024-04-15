@@ -10,11 +10,11 @@
         {% block not_common_links %}{% endblock %}
         <link rel="icon" href="{{ url_for('static', filename='pokeball.png') }}" type="image/png">
     </head>
-    <body>
+    <body class="d-flex flex-column min-vh-100">
         <main>
             {% block content %}{% endblock %}
         </main>
-        <footer id="page-footer" class="page-footer font-small bg-dark pt-4 mt-4">
+        <footer class="page-footer font-small bg-dark pt-4 mt-auto">
             <div class="container">
                 <ul class="list-unstyled list-inline text-center">
                     <li class="list-inline-item no-text-decoration text-light btn-floating btn-fb mx-1">

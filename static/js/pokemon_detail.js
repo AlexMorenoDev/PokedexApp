@@ -65,9 +65,7 @@ $(document).ready(function () {
     /* Initialize tooltip */
     var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
     var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-        return new bootstrap.Tooltip(tooltipTriggerEl, {
-            'customClass': 'custom-white-space-tooltip'
-        })
+        return new bootstrap.Tooltip(tooltipTriggerEl)
     });
 });
 

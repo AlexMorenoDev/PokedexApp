@@ -7,7 +7,7 @@
 {% endblock %}
 
 {% block content %}
-    <div class="container">
+    <div class="container mb-5">
         <div class="row justify-content-md-center">
             <div class="col text-center">
                 <img src="{{ url_for('static', filename='pokeball.png') }}" class="img-fluid main-title-image" alt="Imagen no encontrada">
@@ -15,14 +15,32 @@
             </div>
         </div>                
         <hr>
-        <!-- Filled in javascript -->
+        <!-- Filled using Javascript -->
         <div id="pokemon-list" class="row"></div>
+        
+        <div id="loading-spinners" class="row justify-content-center mb-4 gap-1">
+            <div class="spinner-grow text-dark" role="status" style="animation-delay: 0.1s;">
+                <span class="sr-only">Loading...</span>
+            </div>
+            <div class="spinner-grow text-dark" role="status" style="animation-delay: 0.2s;">
+                <span class="sr-only"></span>
+            </div>
+            <div class="spinner-grow text-dark" role="status" style="animation-delay: 0.3s;">
+                <span class="sr-only"></span>
+            </div> 
+        </div>
+
+        <div id="pokemon-list-ajax-alert-div" class="row justify-content-center" style="display: none;">
+            <div class="col-md-3">
+                <div id="pokemon-list-ajax-alert" class="alert alert-danger text-center" role="alert"></div>
+            </div>
+        </div>
         
         <div class="row">
             <div class="d-flex justify-content-center">
                 <ul class="pagination">
                     <li class="page-item">
-                        <button id="previous-pages-button" class="page-link" aria-label="Anterior" disabled>
+                        <button id="previous-pages-button" class="page-link page-link-edge" aria-label="Anterior">
                             <span aria-hidden="true">&laquo;</span>
                         </button>
                     </li>
@@ -32,11 +50,11 @@
                         {% else %}
                             <li id="page-{{ page_id }}" class="page-item d-none page-element">
                         {% endif %}
-                            <button id="button-page-{{ page_id }}" class="page-link" href="{{ url_for('get_pokemon_list', page_id=page_id) }}">{{ page_id }}</button>
+                            <button id="button-page-{{ page_id }}" class="page-link">{{ page_id }}</button>
                         </li>
                     {% endfor %}
                     <li class="page-item">
-                        <button id="next-pages-button" class="page-link" aria-label="Siguiente">
+                        <button id="next-pages-button" class="page-link page-link-edge" aria-label="Siguiente">
                             <span aria-hidden="true">&raquo;</span>
                         </button>
                     </li>

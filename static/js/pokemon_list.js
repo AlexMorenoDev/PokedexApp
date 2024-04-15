@@ -1,79 +1,100 @@
 $(document).ready(function () {
-    $.ajax({
-        url : '/pokemon-list/1',
-        type : 'GET',
-        dataType:'json',
-        success : function(data) {      
-            insert_list_in_div(data);
-        },
-        error : function(request, error) {
-            console.log(JSON.stringify(error));
-        }
-    });
-    var last_page_selected = 1;
-    $("#button-page-" + last_page_selected).css({"backgroundColor": "#fce2ac"});
-
-    $("[id^=button-page-]").click(function() {
-        let current_id = this.id.split("-")[2];
-        $.ajax({
-            url : '/pokemon-list/' + current_id,
-            type : 'GET',
-            dataType:'json',
-            success : function(data) {      
-                insert_list_in_div(data);
-            },
-            error : function(request, error) {
-                console.log(JSON.stringify(error));
-            }
-        });
-        $("#button-page-" + current_id).css({"backgroundColor": "#fce2ac"});
-        $("#button-page-" + last_page_selected).css({"backgroundColor": "white"});
-        last_page_selected = current_id;
-    }); 
-
     var pages_limit = $(".page-item.d-visible").length;
     var num_pages = parseInt($("#num-pages").text());
-    var page_id_start = parseInt($(".d-visible.page-element").first().children().first().attr('id').split("-")[2]);
-    var page_id_end = page_id_start + pages_limit;
+    var page_id_start = null;
+    var last_page_selected_id = null;
+    var reloading = sessionStorage.getItem("reloading");
+    if (reloading) {
+        last_page_selected_id = parseInt(sessionStorage.getItem("last_page_selected"));
+        page_id_start = parseInt(sessionStorage.getItem("page_start"));
+    } else {
+        last_page_selected_id = 1;
+        page_id_start = parseInt($(".d-visible.page-element").first().children().first().attr('id').split("-")[2]);
 
-    $("#previous-pages-button").click(function() {
+        $.ajax({
+            url: '/pokemon-list/' + last_page_selected_id,
+            type: 'GET',
+            dataType: 'json',
+            success: function (data) {
+                insert_list_in_div(data);
+                $("#loading-spinners").hide();
+            },
+            error: function (xhr, status, error) {
+                $("#pokemon-list-ajax-alert").html(xhr.status + " - " + error + " <button class='btn btn-dark btn-sm' onClick='window.location.reload();'><i class='fa fa-refresh' aria-hidden='true'></i></button>");
+                $("#pokemon-list-ajax-alert-div").show();
+                $("#loading-spinners").hide();
+            }
+        });
+
+        $("#button-page-" + last_page_selected_id).prop("disabled", true);
+    }
+
+    if (last_page_selected_id == 1) {
+        $("#previous-pages-button").prop("disabled", true);
+    }
+
+    var page_id_end = page_id_start + pages_limit;
+ 
+    $("#button-page-" + last_page_selected_id).addClass("page-link-selected");
+    $("[id^=button-page-]").click(function () {
+        let current_id = this.id.split("-")[2];
+        $("#loading-spinners").show();
+        $('#pokemon-list').empty();
+        $.ajax({
+            url: '/pokemon-list/' + current_id,
+            type: 'GET',
+            dataType: 'json',
+            success: function (data) {
+                insert_list_in_div(data);
+                $("#loading-spinners").hide();
+            },
+            error: function (xhr, status, error) {
+                $("#pokemon-list-ajax-alert").html(xhr.status + " - " + error + " <button class='btn btn-dark btn-sm' onClick='reload_page(" + current_id + ", " + page_id_start + ");'><i class='fa fa-refresh' aria-hidden='true'></i></button>");
+                $("#pokemon-list-ajax-alert-div").show();
+                $("#loading-spinners").hide();
+            }
+        });
+        $("#button-page-" + current_id).addClass("page-link-selected");
+        $("#button-page-" + current_id).prop("disabled", true);
+        if (current_id != last_page_selected_id) {
+            $("#button-page-" + last_page_selected_id).removeClass("page-link-selected");
+            $("#button-page-" + last_page_selected_id).prop("disabled", false);
+            last_page_selected_id = current_id;
+            set_session_storage_values(last_page_selected_id, page_id_start);
+        }
+    });
+
+    if (reloading) {
+        if (page_id_start == 1) {
+            $("#previous-pages-button").prop("disabled", true);
+        }
+        if (page_id_end > num_pages) {
+            $("#next-pages-button").prop("disabled", true);
+        }
+        render_page_buttons(page_id_start, page_id_end);
+        $("#button-page-" + last_page_selected_id).click();
+    }
+
+    $("#previous-pages-button").click(function () {
         page_id_start -= pages_limit;
         page_id_end -= pages_limit;
-        $(".page-item.page-element").each(function(i, obj) {
-            i += 1 // Start at 1
-            if(i >= page_id_start && i < page_id_end) { // 'page_id_end' not included, so only '<' needed
-                obj.classList.remove("d-none");
-                obj.classList.add("d-visible");
-            } else if(obj.classList.contains("d-visible")) {
-                obj.classList.remove("d-visible");
-                obj.classList.add("d-none");
-            }
-        });
-        if(page_id_start == 1) {
+        render_page_buttons(page_id_start, page_id_end);
+        if (page_id_start == 1) {
             $(this).prop("disabled", true);
         }
-        if(page_id_end <= num_pages) {
+        if (page_id_end <= num_pages) {
             $("#next-pages-button").prop("disabled", false);
         }
-    }); 
+    });
 
-    $("#next-pages-button").click(function() {
+    $("#next-pages-button").click(function () {
         page_id_start += pages_limit;
         page_id_end += pages_limit;
-        $("[id^=page-]").each(function(i, obj) {
-            i += 1 // Start at 1
-            if(i >= page_id_start && i < page_id_end) { // 'page_id_end' not included, so only '<' needed
-                obj.classList.remove("d-none");
-                obj.classList.add("d-visible");
-            } else if(obj.classList.contains("d-visible")) {
-                obj.classList.remove("d-visible");
-                obj.classList.add("d-none");
-            }
-        });
-        if(page_id_end > num_pages) {
+        render_page_buttons(page_id_start, page_id_end);
+        if (page_id_end > num_pages) {
             $(this).prop("disabled", true);
         }
-        if(page_id_start != 1) {
+        if (page_id_start != 1) {
             $("#previous-pages-button").prop("disabled", false);
         }
     });
@@ -120,4 +141,30 @@ function insert_list_in_div(data) {
         item_text = item_text.padStart(3, '0');
         $(this).text("N.º " + item_text);
     });
+}
+
+function render_page_buttons(start_id, end_id) {
+    $("[id^=page-]").each(function (i, obj) {
+        i += 1 // Start at 1
+        if (i >= start_id && i < end_id) { // 'page_id_end' not included, so only '<' needed
+            obj.classList.remove("d-none");
+            obj.classList.add("d-visible");
+        } else if (obj.classList.contains("d-visible")) {
+            obj.classList.remove("d-visible");
+            obj.classList.add("d-none");
+        }
+    });
+}
+
+function reload_page(button_id, page_id_start) {
+    set_session_storage_values(button_id, page_id_start);
+    window.location.reload();
+}
+
+function set_session_storage_values(button_id = null, page_id_start = null) {
+    sessionStorage.setItem("reloading", "true");
+    if (button_id)
+        sessionStorage.setItem("last_page_selected", button_id);
+    if (page_id_start)
+        sessionStorage.setItem("page_start", page_id_start);
 }

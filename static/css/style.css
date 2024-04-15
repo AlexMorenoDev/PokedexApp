@@ -120,7 +120,15 @@ html {
     color: black;
 }
 
-.page-link:disabled {
+.page-link-selected {
+    background-color: #fce2ac !important;
+}
+
+.page-link:hover, .page-link:focus {
+    color: black;
+}
+
+.page-link-edge:disabled {
     background-color: #d3d3d3;
 }
 
