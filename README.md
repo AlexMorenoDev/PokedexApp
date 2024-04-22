@@ -11,7 +11,7 @@ Además del listado, forma parte de la aplicación la vista de detalle, a la que
     - HTML
     - JavaScript
     - CSS
-    - [Bootstrap 5](https://getbootstrap.com/)
+    - [Bootstrap 5](https://getbootstrap.com/) - [Autocomplete plugin](https://github.com/Honatas/bootstrap-4-autocomplete)
     - [Font Awesome 4](https://fontawesome.com/v4/)
 - Backend:
     - [Python](https://www.python.org/)

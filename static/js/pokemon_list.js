@@ -1,8 +1,10 @@
 $(document).ready(function () {
     var pages_limit = $(".page-item.d-visible").length;
     var num_pages = parseInt($("#num-pages").text());
+    var loading_spinners = $("#loading-spinners");
     var page_id_start = null;
     var last_page_selected_id = null;
+    
     var reloading = sessionStorage.getItem("reloading");
     if (reloading) {
         last_page_selected_id = parseInt(sessionStorage.getItem("last_page_selected"));
@@ -17,12 +19,12 @@ $(document).ready(function () {
             dataType: 'json',
             success: function (data) {
                 insert_list_in_div(data);
-                $("#loading-spinners").hide();
+                loading_spinners.hide();
             },
             error: function (xhr, status, error) {
                 $("#pokemon-list-ajax-alert").html(xhr.status + " - " + error + " <button class='btn btn-dark btn-sm' onClick='window.location.reload();'><i class='fa fa-refresh' aria-hidden='true'></i></button>");
                 $("#pokemon-list-ajax-alert-div").show();
-                $("#loading-spinners").hide();
+                loading_spinners.hide();
             }
         });
 
@@ -38,7 +40,7 @@ $(document).ready(function () {
     $("#button-page-" + last_page_selected_id).addClass("page-link-selected");
     $("[id^=button-page-]").click(function () {
         let current_id = this.id.split("-")[2];
-        $("#loading-spinners").show();
+        loading_spinners.show();
         $('#pokemon-list').empty();
         $.ajax({
             url: '/pokemon-list/' + current_id,
@@ -46,12 +48,12 @@ $(document).ready(function () {
             dataType: 'json',
             success: function (data) {
                 insert_list_in_div(data);
-                $("#loading-spinners").hide();
+                loading_spinners.hide();
             },
             error: function (xhr, status, error) {
                 $("#pokemon-list-ajax-alert").html(xhr.status + " - " + error + " <button class='btn btn-dark btn-sm' onClick='reload_page(" + current_id + ", " + page_id_start + ");'><i class='fa fa-refresh' aria-hidden='true'></i></button>");
                 $("#pokemon-list-ajax-alert-div").show();
-                $("#loading-spinners").hide();
+                loading_spinners.hide();
             }
         });
         $("#button-page-" + current_id).addClass("page-link-selected");
@@ -96,6 +98,31 @@ $(document).ready(function () {
         }
         if (page_id_start != 1) {
             $("#previous-pages-button").prop("disabled", false);
+        }
+    });
+
+    $.ajax({
+        url: '/pokemon-names',
+        type: 'GET',
+        dataType: 'json',
+        success: function (data) {
+            let src = {}
+            for (let id in data.pokemon_names) {
+                let name = data.pokemon_names[id];
+                src[name] = id;
+            }
+            
+            $('#search-name-input').autocomplete({
+                source: src,
+                onSelectItem: onSelectItem,
+                highlightClass: "text-danger",
+                treshold: 1,
+                maximumItems: 10
+            });
+        },
+        error: function (xhr, status, error) {
+            console.log("El buscador por nombre no funciona correctamente.");
+            alert("El buscador por nombre no funciona correctamente.");
         }
     });
 });
@@ -167,4 +194,8 @@ function set_session_storage_values(button_id = null, page_id_start = null) {
         sessionStorage.setItem("last_page_selected", button_id);
     if (page_id_start)
         sessionStorage.setItem("page_start", page_id_start);
+}
+
+function onSelectItem(item) {
+    window.location.href = "/pokemon/" + item.value;
 }

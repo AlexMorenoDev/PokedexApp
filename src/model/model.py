@@ -4,6 +4,17 @@ import model.utils as utils
 import model.config as cfg
 
 
+def get_all_pokemon_names(target_dir):
+    pokemon_names = {}
+    for filename in utils.order_files_numerically(os.listdir(target_dir), target_dir):
+        if filename.endswith(".json"):
+            with open(filename, 'r') as json_file:
+                pokemon_info = json.load(json_file)
+            pokemon_names[pokemon_info["id"]] = pokemon_info["name"]
+
+    return pokemon_names
+
+
 def get_all_pokemon_count(target_dir):
     count = 0
     for filename in os.listdir(target_dir):

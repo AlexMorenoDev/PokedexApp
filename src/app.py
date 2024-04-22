@@ -14,6 +14,13 @@ def pokedex_home():
     return render_template("pokemon_list.html", num_pages=num_pages)
 
 
+@app.route("/pokemon-names", methods=['GET'])
+def get_pokemon_names():
+    global db_path
+
+    return {"pokemon_names": db.get_all_pokemon_names(db_path)}
+
+
 @app.route("/pokemon-list/<page_id>", methods=['GET'])
 def get_pokemon_list(page_id):
     global db_path
