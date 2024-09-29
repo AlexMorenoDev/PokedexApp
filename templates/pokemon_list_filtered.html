@@ -4,12 +4,6 @@
 {% block not_common_links %}
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/pokemon_types.css') }}">
-    <script>
-        var session_type_filter = sessionStorage.getItem("type_filter");
-        if (session_type_filter) {
-            window.location.href = "/" + session_type_filter;
-        }
-    </script>
 {% endblock %}
 
 {% block content %}
@@ -24,12 +18,12 @@
         
         <div class="row pb-3">
             <div class="col">
+                <h5>Listado Pokémon filtrado por el tipo <p id="type-filter" class="type type-{{ type_filter }}">{{ type_filter }}</p> :</h5>
             </div>
             <div class="col-auto">
-                <input type="number" min="1" id="search-number-input" class="form-control" placeholder="Buscar por Nº" />
-            </div>
-            <div class="col-auto">
-                <input type="text" id="search-name-input" class="form-control" placeholder="Buscar por nombre" />
+                <button class="form-control" type="button" id="remove-filter-button" aria-expanded="false">
+                    <i class="fa fa-times" aria-hidden="true"></i>
+                </button>
             </div>
             <div class="col-auto">
                 <div class="dropdown">
@@ -43,6 +37,7 @@
                     </ul>
                 </div>
             </div>
+            
         </div>
         <!-- Filled using Javascript -->
         <div id="pokemon-list" class="row"></div>
@@ -100,6 +95,6 @@
 
 {% block not_common_scripts %}
     <script src="{{ url_for('static', filename='bootstrap-5.0.2/js/bootstrap-4-autocomplete.min.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/pokemon_list.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/pokemon_list_filtered.js') }}"></script>
 {% endblock %}
 

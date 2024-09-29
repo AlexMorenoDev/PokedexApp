@@ -4,14 +4,26 @@ from math import ceil
 
 app = Flask(__name__, template_folder="../templates", static_folder="../static")
 db_path = "../static/pokemon/info/"
+max_pages = 10
+num_pokemon_per_page = 12
 
 
 @app.route("/", methods=['GET'])
 def pokedex_home():
-    global db_path
+    global db_path, max_pages
 
-    num_pages = ceil(db.get_all_pokemon_count(db_path) / 12)
-    return render_template("pokemon_list.html", num_pages=num_pages)
+    type_names = db.get_types_names()
+    num_pages = ceil(db.get_all_pokemon_count(db_path) / num_pokemon_per_page)
+    return render_template("pokemon_list.html", num_pages=num_pages, max_pages=max_pages, type_names=type_names)
+
+
+@app.route("/<type_filter>", methods=['GET'])
+def pokedex_home_filtered(type_filter):
+    global db_path, max_pages
+
+    type_names = db.get_types_names()
+    num_pages = ceil(db.get_filtered_pokemon_count(db_path, type_filter) / num_pokemon_per_page)
+    return render_template("pokemon_list_filtered.html", num_pages=num_pages, max_pages=max_pages, type_filter=type_filter, type_names=type_names)
 
 
 @app.route("/pokemon-names", methods=['GET'])
@@ -23,11 +35,22 @@ def get_pokemon_names():
 
 @app.route("/pokemon-list/<page_id>", methods=['GET'])
 def get_pokemon_list(page_id):
-    global db_path
+    global db_path, num_pokemon_per_page
 
-    ending_id = int(page_id) * 12
-    starting_id = ending_id - 11
+    ending_id = int(page_id) * num_pokemon_per_page
+    starting_id = ending_id - (num_pokemon_per_page - 1)
     return {"pokemon_list": db.get_pokemon_list(db_path, starting_id, ending_id)}
+
+
+@app.route("/pokemon-list/filter/<type_filter>/<page_id>", methods=['GET'])
+def get_filtered_pokemon_list(type_filter, page_id):
+    global db_path, num_pokemon_per_page
+
+    ending_id = int(page_id) * num_pokemon_per_page
+    starting_id = ending_id - (num_pokemon_per_page - 1)
+    
+    return {"pokemon_list": db.get_filtered_pokemon_list(db_path, type_filter, starting_id, ending_id, num_pokemon_per_page)}
+    
 
 
 @app.route("/pokemon/<pokemon_id>", methods=['GET'])
@@ -55,4 +78,4 @@ app.register_error_handler(404, page_not_found)
 
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", debug=True)
+    app.run(host="127.0.0.1", debug=True)

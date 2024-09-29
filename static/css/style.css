@@ -132,4 +132,9 @@ html {
     background-color: #d3d3d3;
 }
 
+.types-dropdown:hover {
+    /* Define a variable that it is filled in javascript ("pokemon_list.js"). The second parameter is the default value, in case the variable is not filled */
+    background-color: var(--dropdown-element-background-color, #e9ecef);
+}
+
 

@@ -59,3 +59,14 @@ def format_pokemon_stats(pokemon_stats):
         formatted_stats[target_stat] = stat_value
 
     return formatted_stats
+
+
+def pokemon_type_match(pokemon_types, type_filter):
+    for type_info in pokemon_types:
+        type_name = type_info[0]
+        target_type = cfg.types_dict[type_name][0]
+        if type_filter == target_type:
+            return True
+    
+    return False
+        

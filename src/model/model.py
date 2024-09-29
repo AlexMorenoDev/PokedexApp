@@ -24,6 +24,20 @@ def get_all_pokemon_count(target_dir):
     return count
 
 
+def get_filtered_pokemon_count(target_dir, type_filter):
+    count = 0
+    for filename in os.listdir(target_dir):
+        if filename.endswith(".json"):
+            filepath = target_dir + filename
+            with open(filepath, 'r') as json_file:
+                pokemon_info = json.load(json_file)
+            
+            if utils.pokemon_type_match(pokemon_info.get("types"), type_filter):
+                count += 1
+    
+    return count
+
+
 def get_pokemon_list(target_dir, starting_id, ending_id):
     pokemon_list = []
     for i in range(starting_id, ending_id+1):
@@ -38,6 +52,34 @@ def get_pokemon_list(target_dir, starting_id, ending_id):
             pokemon_list.append(formatted_info)
     
     return pokemon_list
+
+
+def get_filtered_pokemon_list(target_dir, type_filter, starting_id, ending_id, num_pokemon_per_page):
+    filtered_pokemon_list = []
+    i, j, num_pokemon_type = 1, 1, 1
+
+    max_limit = get_all_pokemon_count(target_dir)
+    while j <= num_pokemon_per_page:
+        filename = target_dir + str(i) + ".json"
+        if os.path.isfile(filename):
+            with open(filename, 'r') as json_file:
+                pokemon_info = json.load(json_file)
+
+            pokemon_types = pokemon_info.get("types")
+            if utils.pokemon_type_match(pokemon_types, type_filter):
+                if num_pokemon_type >= starting_id and num_pokemon_type <= ending_id:
+                    formatted_info = {}
+                    formatted_info["id"] = str(pokemon_info.get("id"))
+                    formatted_info["name"] = pokemon_info.get("name")
+                    formatted_info["types"] = utils.format_pokemon_types(pokemon_types, calculate_weaknesses=False)
+                    filtered_pokemon_list.append(formatted_info)
+                    j += 1
+                num_pokemon_type += 1
+        if i > max_limit:
+            break
+        i += 1
+    
+    return filtered_pokemon_list
 
 
 def get_pokemon_detail(filepath):
@@ -74,6 +116,14 @@ def get_pokemon_evolution_chain(evolution_chain_id):
             evolution_2["types"] = utils.format_pokemon_types(evolution_2.get("types"), calculate_weaknesses=False, types_simple_format=True)
 
     return pokemon_evolution_chain
+
+
+def get_types_names():
+    types_names = []
+    for type_info in cfg.types_dict.values():
+        types_names.append([type_info[0].capitalize(), type_info[1]])
+    
+    return types_names
 
 
 def get_pokemon_types_chart():

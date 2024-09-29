@@ -1,4 +1,11 @@
 $(document).ready(function () {
+    var session_type_filter = sessionStorage.getItem("type_filter");
+    var current_type_filter = $('#type-filter').text()
+    if (!session_type_filter || session_type_filter != current_type_filter) {
+        session_type_filter = current_type_filter;
+        sessionStorage.setItem("type_filter", session_type_filter);
+        sessionStorage.removeItem("reloading");
+    }
     var pages_limit = $(".page-item.d-visible").length;
     var num_pages = parseInt($("#num-pages").text());
     var loading_spinners = $("#loading-spinners");
@@ -15,7 +22,7 @@ $(document).ready(function () {
 
         loading_spinners.show();
         $.ajax({
-            url: '/pokemon-list/' + last_page_selected_id,
+            url: '/pokemon-list/filter/' + session_type_filter + "/" + last_page_selected_id,
             type: 'GET',
             dataType: 'json',
             success: function (data) {
@@ -45,7 +52,7 @@ $(document).ready(function () {
         $('#pokemon-list').empty();
         loading_spinners.show();
         $.ajax({
-            url: '/pokemon-list/' + current_id,
+            url: '/pokemon-list/filter/' + session_type_filter + '/' + current_id,
             type: 'GET',
             dataType: 'json',
             success: function (data) {
@@ -114,40 +121,13 @@ $(document).ready(function () {
         });
     });
 
-    $.ajax({
-        url: '/pokemon-names',
-        type: 'GET',
-        dataType: 'json',
-        success: function (data) {
-            let name_src = {}
-            let num_src = {}
-            for (let id in data.pokemon_names) {
-                let name = data.pokemon_names[id];
-                name_src[name] = id;
-                num_src["N.º " + id.padStart(3, '0')] = id;
-            }
-            
-            $('#search-name-input').autocomplete({
-                source: name_src,
-                onSelectItem: onSelectItem,
-                highlightClass: "text-danger",
-                treshold: 1,
-                maximumItems: 10
-            });
-
-            $('#search-number-input').autocomplete({
-                source: num_src,
-                onSelectItem: onSelectItem,
-                highlightClass: "text-danger",
-                treshold: 1,
-                maximumItems: 10
-            });
-        },
-        error: function (xhr, status, error) {
-            console.log("El buscador por nombre no funciona correctamente.");
-            alert("El buscador por nombre no funciona correctamente.");
-        }
+    $("#remove-filter-button").click(function () {
+        sessionStorage.removeItem("type_filter");
+        sessionStorage.setItem("page_start", 1);
+        sessionStorage.setItem("last_page_selected", 1);
+        window.location.href = "/";
     });
+
 });
 
 function insert_list_in_div(data) {
@@ -217,8 +197,4 @@ function set_session_storage_values(button_id = null, page_id_start = null) {
         sessionStorage.setItem("last_page_selected", button_id);
     if (page_id_start)
         sessionStorage.setItem("page_start", page_id_start);
-}
-
-function onSelectItem(item) {
-    window.location.href = "/pokemon/" + item.value;
 }

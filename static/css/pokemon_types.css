@@ -27,87 +27,87 @@ p.type-normal {
     border-color: #6d6d4e;
 }
 
-p.type-fire {
+p.type-fire, .type-fuego  {
     background-color: #e9682e;
     border-color: #9c531f;
 }
 
-p.type-water {
+p.type-water, .type-agua {
     background-color: #3395f5;
     border-color: #445e9c;
 }
 
-p.type-electric {
+p.type-electric, .type-eléctrico {
     background-color: #f8d030;
     border-color: #a1871f;
 }
 
-p.type-grass {
+p.type-grass, .type-planta {
     background-color: #78c850;
     border-color: #4e8234;
 }
 
-p.type-ice {
+p.type-ice, .type-hielo {
     background-color: #98d8d8;
     border-color: #638d8d;
 }
 
-p.type-fighting {
+p.type-fighting, .type-lucha {
     background-color: #bb5544;
     border-color: #7d1f1a;
 }
 
-p.type-poison {
+p.type-poison, .type-veneno {
     background-color: #ba51ba;
     border-color: #682a68;
 }
 
-p.type-ground {
+p.type-ground, .type-tierra {
     background-color: #d2b359;
     border-color: #927d44;
 }
 
-p.type-flying {
+p.type-flying, .type-volador {
     background-color: #c0aff4;
     border-color: #6d5e9c;
 }
 
-p.type-psychic {
+p.type-psychic, .type-psíquico {
     background-color: #f85888;
     border-color: #a13959;
 }
 
-p.type-bug {
+p.type-bug, .type-bicho {
     background-color: #a8b820;
     border-color: #6d7815;
 }
 
-p.type-rock {
+p.type-rock, .type-roca {
     background-color: #b8a038;
     border-color: #786824;
 }
 
-p.type-ghost {
+p.type-ghost, .type-fantasma {
     background-color: #856eab;
     border-color: #493963;
 }
 
-p.type-dragon {
+p.type-dragon, .type-dragón {
     background-color: #9870fa;
     border-color: #4924a1;
 }
 
-p.type-dark {
+p.type-dark, .type-siniestro {
     background-color: #8e6f5b;
     border-color: #49392f;
 }
 
-p.type-steel {
+p.type-steel, .type-acero {
     background-color: #b8b8d0;
     border-color: #787887;
 }
 
-p.type-fairy {
+p.type-fairy, .type-hada {
     background-color: #f2b0f4;
     border-color: #9b6470;
 }
