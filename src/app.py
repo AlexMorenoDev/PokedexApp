@@ -4,7 +4,7 @@ from math import ceil
 
 app = Flask(__name__, template_folder="../templates", static_folder="../static")
 db_path = "../static/pokemon/info/"
-max_pages = 10
+max_pages = 8
 num_pokemon_per_page = 12
 
 

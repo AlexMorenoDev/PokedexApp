@@ -122,6 +122,31 @@ def download_pokemon_media(pokemon_id):
                 utils.save_file_from_url(sprite_url, path + str(pokemon_id) + sprite_extension)
 
 
+def get_evolution_details(evolution_details):
+    formatted_evolution_details = []
+
+    for evolution_data in evolution_details:
+        new_dict = {}
+        for key, value in evolution_data.items():
+            if value:
+                match key:
+                    case "gender":
+                        new_dict["gender"] = "female" if value == 1 else "male"
+                    case "location":
+                        new_dict["location"] = value["name"].replace('-', ' ').capitalize() # This is formatted because it wont be translated
+                    case "relative_physical_stats":
+                        options = {1 : "atk>def", 0: "atk=def", -1: "atk<def"}
+                        new_dict["relative_physical_stats"] = options[value]
+                    case "trigger":
+                        new_dict["trigger"] = value["name"] # This is not formatted because it will be translated
+                    case _:
+                        new_dict[key] = value
+                        
+        formatted_evolution_details.append(new_dict)
+
+    return formatted_evolution_details
+
+
 # Gets evolution chain info and return a formatted dictionary
 def get_evolution_chain(pokemon_id, pokemon_info_json):
     evolution_chain = {}
@@ -168,6 +193,7 @@ def get_evolution_chain(pokemon_id, pokemon_info_json):
                                     evolution_1_dict["id"] = pokemon_data["id"]
                                     evolution_1_dict["name"] = utils.get_translated_field(pokemon_species_data["names"], "name", "es")
                                     evolution_1_dict["types"] = [type_data["type"]["name"] for type_data in pokemon_data["types"]]
+                                    evolution_1_dict["evolution_details"] = get_evolution_details(evolution_1["evolution_details"])
                                     evolution_1_dict["evolves_to"] = []
                                     for evolution_2 in evolution_1["evolves_to"]:
                                         evolution_2_dict = {}
@@ -183,6 +209,7 @@ def get_evolution_chain(pokemon_id, pokemon_info_json):
                                                 evolution_2_dict["id"] = pokemon_data["id"]
                                                 evolution_2_dict["name"] = utils.get_translated_field(pokemon_species_data["names"], "name", "es")
                                                 evolution_2_dict["types"] = [type_data["type"]["name"] for type_data in pokemon_data["types"]]
+                                                evolution_2_dict["evolution_details"] = get_evolution_details(evolution_2["evolution_details"])
                                                 evolution_2_dict["evolves_to"] = []
 
                                                 evolution_1_dict["evolves_to"].append(evolution_2_dict)
