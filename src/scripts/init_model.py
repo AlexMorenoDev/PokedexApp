@@ -123,36 +123,71 @@ def download_pokemon_media(pokemon_id):
 
 
 def get_evolution_details(evolution_details):
-    formatted_evolution_details = []
 
+    def handle_gender(value):
+        return "Hembra" if value == 1 else "Macho"
+
+    def handle_item(value):
+        object_info = utils.make_pokeapi_call(value["url"], "object info - get_evolution_details()")
+        object_dict = {
+            "id": object_info["id"],
+            "name": utils.get_translated_field(object_info["names"], "name", "es")
+        }
+        utils.save_file_from_url(object_info["sprites"]["default"], cfg.objects_dir + str(object_dict["id"]) + ".png")
+        return object_dict
+
+    def handle_known_move(value):
+        move_info = utils.make_pokeapi_call(value["url"], "object info - get_evolution_details()")
+        return utils.get_translated_field(move_info["names"], "name", "es")
+
+    def handle_location(value):
+        return value["name"].replace('-', ' ').capitalize()
+
+    def handle_party_species(value):
+        pokemon_info = utils.make_pokeapi_call(value["url"], "object info - get_evolution_details()")
+        return pokemon_info["id"]
+
+    def handle_relative_physical_stats(value):
+        options = {1: "atk>def", 0: "atk=def", -1: "atk<def"}
+        return options[value]
+
+    def handle_time_of_day(value):
+        time_day_translation = {
+            "day": "Día",
+            "night": "Noche",
+            "dusk": "Anochecer",
+            "full-moon": "Luna llena"
+        }
+        return time_day_translation.get(value)
+
+    def handle_trigger(value):
+        return cfg.trigger_translations.get(value["name"])
+
+    key_handlers = {
+        "gender": handle_gender,
+        "held_item": handle_item,
+        "item": handle_item,
+        "known_move": handle_known_move,
+        "known_move_type": handle_known_move,
+        "party_type": handle_known_move,
+        "location": handle_location,
+        "party_species": handle_party_species,
+        "trade_species": handle_party_species,
+        "relative_physical_stats": handle_relative_physical_stats,
+        "time_of_day": handle_time_of_day,
+        "trigger": handle_trigger,
+    }
+
+    formatted_evolution_details = []
     for evolution_data in evolution_details:
         new_dict = {}
         for key, value in evolution_data.items():
             if value:
-                if key == "gender":
-                    new_dict[key] = "female" if value == 1 else "male"
-                elif key == "held_item" or key == "item":
-                    object_info = utils.make_pokeapi_call(value["url"], "object info - get_evolution_details()")
-                    object_dict = {}
-                    object_dict["id"] = object_info["id"]
-                    object_dict["name"] = utils.get_translated_field(object_info["names"], "name", "es")
-                    utils.save_file_from_url(object_info["sprites"]["default"],  cfg.objects_dir + str(object_dict["id"]) + ".png")   
-                    new_dict[key] = object_dict
-                elif key == "known_move" or key == "known_move_type" or key == "party_type":
-                    target_info = utils.make_pokeapi_call(value["url"], "object info - get_evolution_details()")
-                    new_dict[key] = utils.get_translated_field(target_info["names"], "name", "es")
-                elif key == "location":
-                    new_dict[key] = value["name"].replace('-', ' ').capitalize() # This is formatted because it wont be translated
-                elif key == "party_species" or key == "trade_species":
-                    pokemon_info = utils.make_pokeapi_call(value["url"], "object info - get_evolution_details()")
-                    new_dict[key] = pokemon_info["id"]
-                elif  key == "relative_physical_stats":
-                    options = {1 : "atk>def", 0: "atk=def", -1: "atk<def"}
-                    new_dict[key] = options[value]
-                elif key == "trigger":
-                    new_dict[key] = cfg.trigger_translations.get(value["name"])
+                handler = key_handlers.get(key)
+                if handler:
+                    new_dict[key] = handler(value)
                 else:
-                    new_dict[key] = value   
+                    new_dict[key] = value
                         
         formatted_evolution_details.append(new_dict)
 
