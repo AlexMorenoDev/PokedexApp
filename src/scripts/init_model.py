@@ -129,18 +129,30 @@ def get_evolution_details(evolution_details):
         new_dict = {}
         for key, value in evolution_data.items():
             if value:
-                match key:
-                    case "gender":
-                        new_dict["gender"] = "female" if value == 1 else "male"
-                    case "location":
-                        new_dict["location"] = value["name"].replace('-', ' ').capitalize() # This is formatted because it wont be translated
-                    case "relative_physical_stats":
-                        options = {1 : "atk>def", 0: "atk=def", -1: "atk<def"}
-                        new_dict["relative_physical_stats"] = options[value]
-                    case "trigger":
-                        new_dict["trigger"] = value["name"] # This is not formatted because it will be translated
-                    case _:
-                        new_dict[key] = value
+                if key == "gender":
+                    new_dict[key] = "female" if value == 1 else "male"
+                elif key == "held_item" or key == "item":
+                    object_info = utils.make_pokeapi_call(value["url"], "object info - get_evolution_details()")
+                    object_dict = {}
+                    object_dict["id"] = object_info["id"]
+                    object_dict["name"] = utils.get_translated_field(object_info["names"], "name", "es")
+                    utils.save_file_from_url(object_info["sprites"]["default"],  cfg.objects_dir + str(object_dict["id"]) + ".png")   
+                    new_dict[key] = object_dict
+                elif key == "known_move" or key == "known_move_type" or key == "party_type":
+                    target_info = utils.make_pokeapi_call(value["url"], "object info - get_evolution_details()")
+                    new_dict[key] = utils.get_translated_field(target_info["names"], "name", "es")
+                elif key == "location":
+                    new_dict[key] = value["name"].replace('-', ' ').capitalize() # This is formatted because it wont be translated
+                elif key == "party_species" or key == "trade_species":
+                    pokemon_info = utils.make_pokeapi_call(value["url"], "object info - get_evolution_details()")
+                    new_dict[key] = pokemon_info["id"]
+                elif  key == "relative_physical_stats":
+                    options = {1 : "atk>def", 0: "atk=def", -1: "atk<def"}
+                    new_dict[key] = options[value]
+                elif key == "trigger":
+                    new_dict[key] = cfg.trigger_translations.get(value["name"])
+                else:
+                    new_dict[key] = value   
                         
         formatted_evolution_details.append(new_dict)
 
@@ -228,6 +240,8 @@ def get_evolution_chain(pokemon_id, pokemon_info_json):
 
 def main():
     utils.create_folders_structure(cfg.pokemon_dirs)
+    if not os.path.isdir(cfg.objects_dir):
+        os.makedirs(cfg.objects_dir)
 
     if cfg.remove_pokemon_info:
         utils.remove_dir_files(cfg.pokemon_info_path)

@@ -30,3 +30,15 @@ pokemon_dirs = [
     "../../static/pokemon/sprites/animated/shiny/front/female/",
     "../../static/pokemon/sprites/animated/shiny/back/female/"
 ]
+
+objects_dir = "../../static/objects/sprites/"
+
+trigger_translations = {
+    "level-up": "Subir de nivel", 
+    "trade": "Intercambio",
+    "use-item": "Usar objeto", 
+    "shed": "Un espacio en el equipo y tener una pokeball", 
+    "tower-of-darkness": "Entrenar en la torre de la oscuridad",
+    "tower-of-water": "Entrenar en la torre de las aguas", 
+    "three-critical-hits": "Asestar tres golpes críticos en un combate"
+}
