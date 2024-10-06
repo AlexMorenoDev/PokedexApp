@@ -42,3 +42,24 @@ trigger_translations = {
     "tower-of-water": "Entrenar en la torre de las aguas", 
     "three-critical-hits": "Asestar tres golpes críticos en un combate"
 }
+
+evolution_keys_translations = {
+    "gender": "Sexo",
+    "held_item": "Objeto equipado",
+    "item": "Objeto",
+    "known_move": "Movimiento aprendido",
+    "known_move_type": "Tipo de movimiento aprendido",
+    "location": "Localización",
+    "min_affection": "Nivel de afecto",
+    "min_beauty": "Nivel de belleza",
+    "min_happiness": "Nivel de felicidad",
+    "min_level": "Nivel",
+    "needs_overworld_rain": "Lluvia",
+    "party_species": "Pokemon en el equipo",
+    "party_type": "Tipo de pokemon en el equipo",
+    "relative_physical_stats": "Estadísticas",
+    "time_of_day": "Hora del día",
+    "trade_species": "Pokemon intercambiado",
+    "trigger": "Desencadenante",
+    "turn_upside_down": "Poner boca abajo la consola"
+}

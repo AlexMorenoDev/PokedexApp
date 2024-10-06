@@ -67,6 +67,7 @@ $(document).ready(function () {
     var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
         return new bootstrap.Tooltip(tooltipTriggerEl)
     });
+    
 });
 
 function update_image_src(selector, url_split_index, val_1, val_2) {

@@ -17,15 +17,13 @@
         <hr>
         
         <div class="row pb-3">
-            <div class="col">
-                <h5>Listado Pokémon filtrado por el tipo <p id="type-filter" class="type type-{{ type_filter }}">{{ type_filter }}</p> :</h5>
-            </div>
-            <div class="col-auto">
+            <div class="col"></div>
+            <div class="col-auto p-2">
                 <button class="form-control" type="button" id="remove-filter-button" aria-expanded="false">
                     <i class="fa fa-times" aria-hidden="true"></i>
                 </button>
             </div>
-            <div class="col-auto">
+            <div class="col-auto p-2">
                 <div class="dropdown">
                     <button class="form-control dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                         Tipo
@@ -37,8 +35,9 @@
                     </ul>
                 </div>
             </div>
-            
         </div>
+        <div></div>
+        <h5>Listado Pokémon filtrado por el tipo <p id="type-filter" class="type type-{{ type_filter }}">{{ type_filter }}</p></h5>
         <!-- Filled using Javascript -->
         <div id="pokemon-list" class="row"></div>
         

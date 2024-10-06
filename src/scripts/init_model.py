@@ -142,13 +142,16 @@ def get_evolution_details(evolution_details):
 
     def handle_location(value):
         return value["name"].replace('-', ' ').capitalize()
+    
+    def handle_boolean(value):
+        return "Sí" if value else "No"
 
     def handle_party_species(value):
         pokemon_info = utils.make_pokeapi_call(value["url"], "object info - get_evolution_details()")
         return pokemon_info["id"]
 
     def handle_relative_physical_stats(value):
-        options = {1: "atk>def", 0: "atk=def", -1: "atk<def"}
+        options = {1: "Ataque mayor que la defensa", 0: "Ataque igual que la defensa", -1: "Ataque menor que la defensa"}
         return options[value]
 
     def handle_time_of_day(value):
@@ -171,23 +174,25 @@ def get_evolution_details(evolution_details):
         "known_move_type": handle_known_move,
         "party_type": handle_known_move,
         "location": handle_location,
+        "needs_overworld_rain": handle_boolean,
         "party_species": handle_party_species,
         "trade_species": handle_party_species,
         "relative_physical_stats": handle_relative_physical_stats,
         "time_of_day": handle_time_of_day,
         "trigger": handle_trigger,
+        "turn_upside_down": handle_boolean
     }
 
     formatted_evolution_details = []
     for evolution_data in evolution_details:
         new_dict = {}
         for key, value in evolution_data.items():
-            if value:
+            if value or (value == 0 and not isinstance(value, bool)):
                 handler = key_handlers.get(key)
                 if handler:
-                    new_dict[key] = handler(value)
+                    new_dict[cfg.evolution_keys_translations[key]] = handler(value)
                 else:
-                    new_dict[key] = value
+                    new_dict[cfg.evolution_keys_translations[key]] = value
                         
         formatted_evolution_details.append(new_dict)
 

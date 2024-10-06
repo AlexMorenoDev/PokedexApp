@@ -12,7 +12,7 @@ num_pokemon_per_page = 12
 def pokedex_home():
     global db_path, max_pages
 
-    type_names = db.get_types_names()
+    type_names = db.get_types_names_and_colors()
     num_pages = ceil(db.get_all_pokemon_count(db_path) / num_pokemon_per_page)
     return render_template("pokemon_list.html", num_pages=num_pages, max_pages=max_pages, type_names=type_names)
 
@@ -21,7 +21,7 @@ def pokedex_home():
 def pokedex_home_filtered(type_filter):
     global db_path, max_pages
 
-    type_names = db.get_types_names()
+    type_names = db.get_types_names_and_colors()
     num_pages = ceil(db.get_filtered_pokemon_count(db_path, type_filter) / num_pokemon_per_page)
     return render_template("pokemon_list_filtered.html", num_pages=num_pages, max_pages=max_pages, type_filter=type_filter, type_names=type_names)
 
@@ -61,7 +61,8 @@ def pokemon_info_detail(pokemon_id):
     if not pokemon_info:
         abort(404)
     pokemon_info["total_pokemon_count"] = db.get_all_pokemon_count(db_path)
-    return render_template("pokemon_detail.html", pokemon_info=pokemon_info)
+    pokemon_types_names = db.get_types_names()
+    return render_template("pokemon_detail.html", pokemon_info=pokemon_info, pokemon_types_names=pokemon_types_names)
 
 
 @app.route("/tabla-tipos", methods=['GET'])

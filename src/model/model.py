@@ -118,10 +118,18 @@ def get_pokemon_evolution_chain(evolution_chain_id):
     return pokemon_evolution_chain
 
 
+def get_types_names_and_colors():
+    types_names_and_colors = []
+    for type_info in cfg.types_dict.values():
+        types_names_and_colors.append([type_info[0].capitalize(), type_info[1]])
+    
+    return types_names_and_colors
+
+
 def get_types_names():
     types_names = []
     for type_info in cfg.types_dict.values():
-        types_names.append([type_info[0].capitalize(), type_info[1]])
+        types_names.append(type_info[0].capitalize())
     
     return types_names
 
