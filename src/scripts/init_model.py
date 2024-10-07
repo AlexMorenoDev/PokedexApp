@@ -129,9 +129,13 @@ def get_evolution_details(evolution_details):
 
     def handle_item(value):
         object_info = utils.make_pokeapi_call(value["url"], "object info - get_evolution_details()")
+        translated_field = utils.get_translated_field(object_info["names"], "name", "es")
+        if not translated_field:
+            translated_field = object_info["name"].replace('-', ' ').capitalize()
+
         object_dict = {
             "id": object_info["id"],
-            "name": utils.get_translated_field(object_info["names"], "name", "es")
+            "name": translated_field
         }
         utils.save_file_from_url(object_info["sprites"]["default"], cfg.objects_dir + str(object_dict["id"]) + ".png")
         return object_dict

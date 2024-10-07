@@ -50,6 +50,8 @@ La aplicación está disponible en el siguiente [enlace](https://alxpokedexapp.o
 
 - "static/default_image.png" --> 'No image' icons created by sonnycandra - [Flaticon](https://www.flaticon.com/free-icon/no-image_11542598?term=no+photo&page=1&position=12&origin=tag&related_id=11542598). / 'No image' icono creado por sonnycandra - [Flaticon](https://www.flaticon.com/free-icon/no-image_11542598?term=no+photo&page=1&position=12&origin=tag&related_id=11542598).
 
+- "static/objects/sprites/trade.png" --> Image by Ramy Wafaa Wadee Abdou Bektor from [Iconfinder](https://www.iconfinder.com/icons/1337529/exchange_game_go_play_pokemon_icon). / Imagen hecha por Ramy Wafaa Wadee Abdou Bektor y descargada de [Iconfinder](https://www.iconfinder.com/icons/1337529/exchange_game_go_play_pokemon_icon).
+
 - Any other files, data or media within this repository that are copyrighted and not mentioned above, are the property or trademarks of their respective owners. / Cualquier otro archivo, datos o multimedia dentro de este repositorio que tenga copyright y que no haya sido mencionado anteriormente, son propiedad o marcas registradas por sus respectivos dueños.
 
 ## Capturas

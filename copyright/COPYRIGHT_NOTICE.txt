@@ -17,16 +17,19 @@ la Pokéapi para cada pokemon, cadena evolutiva...:
 
 
 "static/pokeball.png"
-Image by 'Harisankar Sahoo' from Pixabay /
-Imagen hecha por 'Harisankar Sahoo' y descargada de Pixabay:
+Image by 'Harisankar Sahoo' from Pixabay / Imagen hecha por 'Harisankar Sahoo' y descargada de Pixabay:
     - https://pixabay.com/vectors/pokemon-icon-design-symbol-sign-4657023/
     - https://pixabay.com/users/hsaart-8633812/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=4657023
     - https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=4657023
 
 
 "static/default_image.png"
-'No image' icons created by sonnycandra - Flaticon. / 'No image' icono creado por sonnycandra - Flaticon.
+'No image' icons created by sonnycandra - Flaticon. / 'No image' icono creado por sonnycandra - Flaticon:
 	- https://www.flaticon.com/free-icon/no-image_11542598?term=no+photo&page=1&position=12&origin=tag&related_id=11542598
+
+
+- "static/objects/sprites/trade.png" --> Image by Ramy Wafaa Wadee Abdou Bektor from Iconfinder / Imagen hecha por Ramy Wafaa Wadee Abdou Bektor y descargada de Iconfinder:
+    - https://www.iconfinder.com/icons/1337529/exchange_game_go_play_pokemon_icon 
 
 
 Any other files, data or media within this repository that are copyrighted and not mentioned above, are the property or trademarks of their respective owners. /

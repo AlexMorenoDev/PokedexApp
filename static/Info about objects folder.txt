@@ -1,0 +1,6 @@
+Todas las imágenes de la carpeta "objects/sprites/" se generan con el script "init_model.py" menos las siguientes, que se han descargado manualmente:
+    level-up.png --> descargada de la PokeAPI | https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/rare-candy.png
+    trade.png --> descargada de IconFinder | https://www.iconfinder.com/icons/1337529/exchange_game_go_play_pokemon_icon
+
+
+Posteriormente, se han redimensionado para que tengan un tamaño de 30x30 píxeles.

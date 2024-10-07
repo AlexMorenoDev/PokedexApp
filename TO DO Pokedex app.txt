@@ -2,6 +2,7 @@ NUEVAS FUNCIONALIDADES:
 - Añadir una función para corregir Pokemon especiales que no tienen definida la cadena evolutiva en la Pokéapi. Por ejemplo: Meltan y Melmetal.
 - Ver si todos los pokemon tienen Sprite en 3D, y si es así, descargar los sprites y añadirlos al detalle del pokemon.
 - Añadir al detalle de un pokémon una tabla con los ataques que aprende el pokemon.
+- Hacer que las imágenes que se descargan y ajustan manualmente, se descarguen y se redimensionen automáticamente en 'init_model.py'.
 - Añadir otros datos al detalle de un pokémon el grupo huevo, crecimiento, etc.
 - Ver como poder mostrar información como la descripción del pokémon, la descripción de las habilidades, ataques... dependiendo la versión del juego (en pestañas).
 - Arriba poner flechitas para ir a la página siguiente o la anterior en el listado de Pokémon.
