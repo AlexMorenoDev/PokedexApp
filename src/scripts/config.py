@@ -33,9 +33,11 @@ pokemon_dirs = [
 
 objects_dir = "../../static/objects/sprites/"
 
+# Values that are dictionaries contain the corresponding translation and an image id so in the fronend we can get the trigger's icon/image with it
+# Single values don´t have got any icon/image
 trigger_translations = {
-    "level-up": "Subir de nivel", 
-    "trade": "Intercambio",
+    "level-up": {"id": "level-up", "name": "Subir de nivel"}, 
+    "trade": {"id": "trade", "name": "Intercambio"},
     "use-item": "Usar objeto", 
     "shed": "Un espacio en el equipo y tener una pokeball", 
     "tower-of-darkness": "Entrenar en la torre de la oscuridad",

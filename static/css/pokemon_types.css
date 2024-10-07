@@ -24,92 +24,92 @@ p.type-sm {
 
 p.type-normal {
     background-color: #c7c2b8;
-    border-color: #6d6d4e;
+    border-color: #6d6d4e !important;
 }
 
 p.type-fire, .type-fuego  {
     background-color: #e9682e;
-    border-color: #9c531f;
+    border-color: #9c531f !important;
 }
 
 p.type-water, .type-agua {
     background-color: #3395f5;
-    border-color: #445e9c;
+    border-color: #445e9c !important;
 }
 
 p.type-electric, .type-eléctrico {
     background-color: #f8d030;
-    border-color: #a1871f;
+    border-color: #a1871f !important;
 }
 
 p.type-grass, .type-planta {
     background-color: #78c850;
-    border-color: #4e8234;
+    border-color: #4e8234 !important;
 }
 
 p.type-ice, .type-hielo {
     background-color: #98d8d8;
-    border-color: #638d8d;
+    border-color: #638d8d !important;
 }
 
 p.type-fighting, .type-lucha {
     background-color: #bb5544;
-    border-color: #7d1f1a;
+    border-color: #7d1f1a !important;
 }
 
 p.type-poison, .type-veneno {
     background-color: #ba51ba;
-    border-color: #682a68;
+    border-color: #682a68 !important;
 }
 
 p.type-ground, .type-tierra {
     background-color: #d2b359;
-    border-color: #927d44;
+    border-color: #927d44 !important;
 }
 
 p.type-flying, .type-volador {
     background-color: #c0aff4;
-    border-color: #6d5e9c;
+    border-color: #6d5e9c !important;
 }
 
 p.type-psychic, .type-psíquico {
     background-color: #f85888;
-    border-color: #a13959;
+    border-color: #a13959 !important;
 }
 
 p.type-bug, .type-bicho {
     background-color: #a8b820;
-    border-color: #6d7815;
+    border-color: #6d7815 !important;
 }
 
 p.type-rock, .type-roca {
     background-color: #b8a038;
-    border-color: #786824;
+    border-color: #786824 !important;
 }
 
 p.type-ghost, .type-fantasma {
     background-color: #856eab;
-    border-color: #493963;
+    border-color: #493963 !important;
 }
 
 p.type-dragon, .type-dragón {
     background-color: #9870fa;
-    border-color: #4924a1;
+    border-color: #4924a1 !important;
 }
 
 p.type-dark, .type-siniestro {
     background-color: #8e6f5b;
-    border-color: #49392f;
+    border-color: #49392f !important;
 }
 
 p.type-steel, .type-acero {
     background-color: #b8b8d0;
-    border-color: #787887;
+    border-color: #787887 !important;
 }
 
 p.type-fairy, .type-hada {
     background-color: #f2b0f4;
-    border-color: #9b6470;
+    border-color: #9b6470 !important;
 }
 
 p.multiplier {
