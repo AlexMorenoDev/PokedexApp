@@ -1,8 +1,10 @@
-from flask import Flask, render_template, abort
+from flask import Flask, render_template, abort, send_from_directory
 import model.model as db
 from math import ceil
+import os
 
-app = Flask(__name__, template_folder="../templates", static_folder="../static")
+static_folder = "../static"
+app = Flask(__name__, template_folder="../templates", static_folder=None)
 db_path = "../static/pokemon/info/"
 max_pages = 8
 num_pokemon_per_page = 12
@@ -52,7 +54,6 @@ def get_filtered_pokemon_list(type_filter, page_id):
     return {"pokemon_list": db.get_filtered_pokemon_list(db_path, type_filter, starting_id, ending_id, num_pokemon_per_page)}
     
 
-
 @app.route("/pokemon/<pokemon_id>", methods=['GET'])
 def pokemon_info_detail(pokemon_id):
     global db_path
@@ -76,6 +77,23 @@ def page_not_found(e):
     return render_template("404.html"), 404
 
 app.register_error_handler(404, page_not_found)
+
+
+@app.route('/static/<path:filename>', methods=['GET'])
+def custom_static(filename):
+    full_path = os.path.join(static_folder, filename)
+    if os.path.isfile(full_path):
+        return send_from_directory(static_folder, filename)
+    
+    parts = filename.split("/")
+    is_female_sprite = (parts[0] == "pokemon" and parts[1] == "sprites" and parts[5] == "female")
+
+    if is_female_sprite:
+        male_filepath = full_path.replace("female", "male")
+        if os.path.isfile(male_filepath):
+            return send_from_directory(static_folder, filename.replace("female", "male"))
+    
+    return send_from_directory(static_folder, "default_image.png")
 
 
 if __name__ == "__main__":

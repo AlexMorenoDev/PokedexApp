@@ -2,15 +2,15 @@
 
 {% block title %}<title>Pokedex</title>{% endblock %}
 {% block not_common_links %}
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/pokemon_types.css') }}">
+    <link rel="stylesheet" href="{{ url_for('custom_static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('custom_static', filename='css/pokemon_types.css') }}">
 {% endblock %}
 
 {% block content %}
     <div class="container mb-5">
         <div class="row justify-content-md-center">
             <div class="col text-center">
-                <img src="{{ url_for('static', filename='pokeball.png') }}" class="img-fluid main-title-image" alt="Imagen no encontrada">
+                <img src="{{ url_for('custom_static', filename='pokeball.png') }}" class="img-fluid main-title-image" alt="Imagen no encontrada">
                 <h1 class="main-title">POKÉDEX</h1>
             </div>
         </div>                
@@ -93,7 +93,7 @@
 {% endblock %}
 
 {% block not_common_scripts %}
-    <script src="{{ url_for('static', filename='bootstrap-5.0.2/js/bootstrap-4-autocomplete.min.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/pokemon_list_filtered.js') }}"></script>
+    <script src="{{ url_for('custom_static', filename='bootstrap-5.0.2/js/bootstrap-4-autocomplete.min.js') }}"></script>
+    <script src="{{ url_for('custom_static', filename='js/pokemon_list_filtered.js') }}"></script>
 {% endblock %}
 

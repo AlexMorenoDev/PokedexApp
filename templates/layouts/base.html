@@ -5,10 +5,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         {% block title %}{% endblock %}
-        <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap-5.0.2/css/bootstrap.min.css') }}">
-        <link rel="stylesheet" href="{{ url_for('static', filename='font-awesome-4.7.0/css/font-awesome.min.css') }}">
+        <link rel="stylesheet" href="{{ url_for('custom_static', filename='bootstrap-5.0.2/css/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{ url_for('custom_static', filename='font-awesome-4.7.0/css/font-awesome.min.css') }}">
         {% block not_common_links %}{% endblock %}
-        <link rel="icon" href="{{ url_for('static', filename='pokeball.png') }}" type="image/png">
+        <link rel="icon" href="{{ url_for('custom_static', filename='pokeball.png') }}" type="image/png">
     </head>
     <body class="d-flex flex-column min-vh-100">
         <main>
@@ -19,7 +19,7 @@
                 <ul class="list-unstyled list-inline text-center">
                     <li class="list-inline-item no-text-decoration text-light btn-floating btn-fb mx-1">
                         <b>Copyright</b>: Please note every Pokémon media and data used in this app are copyrighted by The Pokémon Company, Nintendo, Creatures Inc., Game Freak and its affiliates. 
-                        This is just a fan-made project for educative and informational purposes, no copyright infringement intended. For additional information, check "Readme" or "Copyright notice" links.
+                        This is just a fan-made project for educative and informational purposes, no copyright infringement intended. For additional information, check "Readme", "References" or "Copyright notice" links.
                     </li>
                 </ul>
                 <ul class="list-unstyled list-inline text-center">
@@ -59,7 +59,9 @@
                                 <li><a class="dropdown-item" href="https://www.gamefreak.co.jp/" target="_blank">Game Freak</a></li>
                                 <li><a class="dropdown-item" href="https://pokeapi.co/" target="_blank">Pokéapi</a></li>
                                 <li><a class="dropdown-item" href="https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=4657023" target="_blank">Pixabay</a></li>
-                                <li><a class="dropdown-item" href="https://pixabay.com/vectors/pokemon-icon-design-symbol-sign-4657023/" target="_blank">Favicon and title image</a></li>
+                                <li><a class="dropdown-item" href="https://pixabay.com/vectors/pokemon-icon-design-symbol-sign-4657023/" target="_blank">Favicon and title image (Hsaart - Pixabay)</a></li>
+                                <li><a class="dropdown-item" href="https://www.flaticon.com/" target="_blank">Flaticon</a></li>
+                                <li><a class="dropdown-item" href="https://www.flaticon.com/free-icon/no-image_11542598?term=no+photo&page=1&position=12&origin=tag&related_id=11542598" title="no image icons" target="_blank">Default image (sonnycandra - Flaticon)</a></li>
                             </ul>
                         </div>
                     </li>
@@ -73,8 +75,8 @@
             </div>
         </footer>
 
-        <script src="{{ url_for('static', filename='js/jquery-3.7.1.min.js') }}"></script>
-        <script src="{{ url_for('static', filename='bootstrap-5.0.2/js/bootstrap.bundle.min.js') }}"></script>
+        <script src="{{ url_for('custom_static', filename='js/jquery-3.7.1.min.js') }}"></script>
+        <script src="{{ url_for('custom_static', filename='bootstrap-5.0.2/js/bootstrap.bundle.min.js') }}"></script>
         {% block not_common_scripts %}{% endblock %}
     </body>
 </html>

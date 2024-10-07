@@ -2,8 +2,8 @@
 
 {% block title %}<title>Pokedex - {{ pokemon_info.name }}</title>{% endblock %}
 {% block not_common_links %}
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/pokemon_types.css') }}">
+    <link rel="stylesheet" href="{{ url_for('custom_static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('custom_static', filename='css/pokemon_types.css') }}">
 {% endblock %}
 
 {% block content %}
@@ -11,7 +11,7 @@
         <div class="row justify-content-center">
             <div class="col-lg-4 gy-5">
                 <div class="card">
-                    <img src="{{ url_for('static', filename='pokemon/images/normal/' + pokemon_info.id + '.png') }}" id="pokemon-image" class="card-img-top" style="background-color: {{ pokemon_info.types[0][2] }};" alt="Imagen no encontrada">
+                    <img src="{{ url_for('custom_static', filename='pokemon/images/normal/' + pokemon_info.id + '.png') }}" id="pokemon-image" class="card-img-top" style="background-color: {{ pokemon_info.types[0][2] }};" alt="Imagen no encontrada">
                     <div class="card-body">
                         <div class="row">
                             <div class="col">
@@ -61,7 +61,7 @@
                         </table>
                         <h4><b>Grito</b>&nbsp;&nbsp;<i class="fa fa-volume-up" aria-hidden="true"></i></h4>
                         <audio controls id="pokemon-cry" class="w-100">
-                            <source src="{{ url_for('static', filename='pokemon/cries/mp3/' + pokemon_info.id + '.mp3') }}" type="audio/mpeg">
+                            <source src="{{ url_for('custom_static', filename='pokemon/cries/mp3/' + pokemon_info.id + '.mp3') }}" type="audio/mpeg">
                             Su navegador no es compatible con el formato del audio.
                         </audio>
                     </div>
@@ -122,19 +122,19 @@
                                 <tr>
                                     <th class="align-middle text-center">Normal</th>
                                     <td class="align-middle text-center">
-                                        <img id="normal-sprite-male" class="pokemon-sprite" src="{{ url_for('static', filename='pokemon/sprites/no_animated/normal/front/male/' + pokemon_info.id + '.png') }}" alt="N/A">
+                                        <img id="normal-sprite-male" class="pokemon-sprite" src="{{ url_for('custom_static', filename='pokemon/sprites/no_animated/normal/front/male/' + pokemon_info.id + '.png') }}" alt="N/A">
                                     </td>
                                     <td class="align-middle text-center">
-                                        <img id="normal-sprite-female" class="pokemon-sprite" src="{{ url_for('static', filename='pokemon/sprites/no_animated/normal/front/female/' + pokemon_info.id + '.png') }}" alt="N/A">
+                                        <img id="normal-sprite-female" class="pokemon-sprite" src="{{ url_for('custom_static', filename='pokemon/sprites/no_animated/normal/front/female/' + pokemon_info.id + '.png') }}" alt="N/A">
                                     </td>
                                 </tr>
                                 <tr>
                                     <th class="align-middle col-3 text-center">Animado</th>
                                     <td class="align-middle text-center">
-                                        <img id="animated-sprite-male" class="pokemon-sprite" src="{{ url_for('static', filename='pokemon/sprites/animated/normal/front/male/' + pokemon_info.id + '.gif') }}" alt="N/A">
+                                        <img id="animated-sprite-male" class="pokemon-sprite" src="{{ url_for('custom_static', filename='pokemon/sprites/animated/normal/front/male/' + pokemon_info.id + '.gif') }}" alt="N/A">
                                     </td>
                                     <td class="align-middle text-center">
-                                        <img id="animated-sprite-female" class="pokemon-sprite" src="{{ url_for('static', filename='pokemon/sprites/animated/normal/front/female/' + pokemon_info.id + '.gif') }}" alt="N/A">
+                                        <img id="animated-sprite-female" class="pokemon-sprite" src="{{ url_for('custom_static', filename='pokemon/sprites/animated/normal/front/female/' + pokemon_info.id + '.gif') }}" alt="N/A">
                                     </td>
                                 </tr>
                             </tbody>
@@ -186,7 +186,7 @@
                         <div class="row justify-content-center">
                             <div class="col">
                                 <div class="card text-center mb-2 border-0">
-                                    <img src="{{ url_for('static', filename='pokemon/images/normal/' + pokemon_info.evolution_chain.id + '.png') }}" class="card-img-top evolution-chain-img" style="background-color: {{ pokemon_info.evolution_chain.types[0][2] }};" alt="Imagen no encontrada">
+                                    <img src="{{ url_for('custom_static', filename='pokemon/images/normal/' + pokemon_info.evolution_chain.id + '.png') }}" class="card-img-top evolution-chain-img" style="background-color: {{ pokemon_info.evolution_chain.types[0][2] }};" alt="Imagen no encontrada">
                                     <div class="card-body">
                                         <p class="card-subtitle evolution-chain-id">{{ pokemon_info.evolution_chain.id }}</p>
                                         <a href="/pokemon/{{ pokemon_info.evolution_chain.id|int }}"><p class="evolution-chain-name">{{ pokemon_info.evolution_chain.name }}</p></a>
@@ -237,7 +237,7 @@
                                                                                         {% if value.id %}
                                                                                             <th class="align-middle text-center col-1">{{ key }}</th>
                                                                                             <td class="align-middle text-center">
-                                                                                                <img src="{{ url_for('static', filename='objects/sprites/' + value.id|string + '.png') }}" alt="Imagen no encontrada">{{ value.name }}
+                                                                                                <img src="{{ url_for('custom_static', filename='objects/sprites/' + value.id|string + '.png') }}" alt="Imagen no encontrada">{{ value.name }}
                                                                                             </td>
                                                                                         {% else %}
                                                                                             <th class="align-middle text-center col-1">{{ key }}</th>
@@ -263,7 +263,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <img src="{{ url_for('static', filename='pokemon/images/normal/' + evolution_1.id + '.png') }}" class="card-img-top evolution-chain-img" style="background-color: {{ evolution_1.types[0][2] }};" alt="Imagen no encontrada">
+                                            <img src="{{ url_for('custom_static', filename='pokemon/images/normal/' + evolution_1.id + '.png') }}" class="card-img-top evolution-chain-img" style="background-color: {{ evolution_1.types[0][2] }};" alt="Imagen no encontrada">
                                             <div class="card-body">
                                                 <p class="card-subtitle evolution-chain-id">{{ evolution_1.id }}</p>
                                                 <a href="/pokemon/{{ evolution_1.id|int }}"><p class="evolution-chain-name">{{ evolution_1.name }}</p></a>
@@ -312,7 +312,7 @@
                                                                                                 {% if value.id %}
                                                                                                     <th class="align-middle text-center col-1">{{ key }}</th>
                                                                                                     <td class="align-middle text-center">
-                                                                                                        <img src="{{ url_for('static', filename='objects/sprites/' + value.id|string + '.png') }}" alt="Imagen no encontrada">{{ value.name }}
+                                                                                                        <img src="{{ url_for('custom_static', filename='objects/sprites/' + value.id|string + '.png') }}" alt="Imagen no encontrada">{{ value.name }}
                                                                                                     </td>
                                                                                                 {% else %}
                                                                                                     <th class="align-middle text-center col-1">{{ key }}</th>
@@ -338,7 +338,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <img src="{{ url_for('static', filename='pokemon/images/normal/' + evolution_2.id + '.png') }}" class="card-img-top evolution-chain-img" style="background-color: {{ evolution_2.types[0][2] }};" alt="Imagen no encontrada">
+                                                    <img src="{{ url_for('custom_static', filename='pokemon/images/normal/' + evolution_2.id + '.png') }}" class="card-img-top evolution-chain-img" style="background-color: {{ evolution_2.types[0][2] }};" alt="Imagen no encontrada">
                                                     <div class="card-body">
                                                         <p class="card-subtitle evolution-chain-id">{{ evolution_2.id }}</p>
                                                         <a href="/pokemon/{{ evolution_2.id|int }}"><p class="evolution-chain-name">{{ evolution_2.name }}</p></a>
@@ -361,5 +361,5 @@
 {% endblock %}
 
 {% block not_common_scripts %}
-    <script src="{{ url_for('static', filename='js/pokemon_detail.js') }}"></script>
+    <script src="{{ url_for('custom_static', filename='js/pokemon_detail.js') }}"></script>
 {% endblock %}

@@ -48,6 +48,8 @@ La aplicación está disponible en el siguiente [enlace](https://alxpokedexapp.o
 - "static/pokeball.png" --> Image by '[Harisankar Sahoo](https://pixabay.com/users/hsaart-8633812/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=4657023)' from [Pixabay](https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=4657023) / Imagen hecha por '[Harisankar Sahoo](https://pixabay.com/users/hsaart-8633812/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=4657023)' y descargada de [Pixabay](https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=4657023): 
     - [Image](https://pixabay.com/vectors/pokemon-icon-design-symbol-sign-4657023/)
 
+- "static/default_image.png" --> 'No image' icons created by sonnycandra - [Flaticon](https://www.flaticon.com/free-icon/no-image_11542598?term=no+photo&page=1&position=12&origin=tag&related_id=11542598). / 'No image' icono creado por sonnycandra - [Flaticon](https://www.flaticon.com/free-icon/no-image_11542598?term=no+photo&page=1&position=12&origin=tag&related_id=11542598).
+
 - Any other files, data or media within this repository that are copyrighted and not mentioned above, are the property or trademarks of their respective owners. / Cualquier otro archivo, datos o multimedia dentro de este repositorio que tenga copyright y que no haya sido mencionado anteriormente, son propiedad o marcas registradas por sus respectivos dueños.
 
 ## Capturas

@@ -1,0 +1,29 @@
+NUEVAS FUNCIONALIDADES:
+- Añadir una función para corregir Pokemon especiales que no tienen definida la cadena evolutiva en la Pokéapi. Por ejemplo: Meltan y Melmetal.
+- Ver si todos los pokemon tienen Sprite en 3D, y si es así, descargar los sprites y añadirlos al detalle del pokemon.
+- Añadir al detalle de un pokémon una tabla con los ataques que aprende el pokemon.
+- Añadir otros datos al detalle de un pokémon el grupo huevo, crecimiento, etc.
+- Ver como poder mostrar información como la descripción del pokémon, la descripción de las habilidades, ataques... dependiendo la versión del juego (en pestañas).
+- Arriba poner flechitas para ir a la página siguiente o la anterior en el listado de Pokémon.
+
+
+OPTIMIZACIÓN DE CÓDIGO:
+- Reducir el código del script "init_model()" --> función "get_evolution_chain()" de tal forma que en vez de poner 3 bloques (uno para cada pokemon de la cadena evolutiva)
+se haga un bucle que compruebe si dentro de "evolve_to" hay algo. Si hay algo continua, si no hay nada se pararía ahí.
+- Revisar si hay código repetido, y si es así, crear una función para reducir líneas de código.
+
+
+
+TERMINADAS:
+- Puntos debiles del pokemon. (HECHO)
+- Página en la que se muestre la tabla de tipos. (HECHO)
+- Paginación del listado mostrando a la vez 8-12 pokemon. (HECHO)
+- Footer abajo del todo siempre, incluso cuando se haga zoom out. (HECHO)
+- Spinner de carga en el listado. (HECHO)
+- Mostrar error en un mensaje si fallan las llamadas AJAX. (HECHO)
+- Añadir campos de búsqueda por número y nombre de Pokémon. (HECHO)
+- Filtrar el listado por tipo. (HECHO)
+- Añadir a cada paso de la cadena evolutiva la forma en la que se desencadena la evolución (nivel, objeto, etc.). (HECHO)
+- Añadir imágenes a los triggers subir de nivel e intercambio. El resto no le veo mucho sentido ponerles imágenes. (HECHO)
+- Hacer que los sprites de las hembras en caso de no haber diferencias sean iguales que los machos. (HECHO)
+    * (Revisar si es posible evitar que el usuario pueda generar un bucle infinito si añade un onerror en HTML en la img e intentando cargar una imagen que no existe) (HECHO)
